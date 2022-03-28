@@ -1,28 +1,28 @@
 import { Link } from "react-router-dom";
-import login from './Login.scss';
+import styles from './Login.module.css';
 export function Login(){
     return (
             <div>
                 <main>
-                    <div className={login.row}>
-                        <div className={login.colm_logo}>
+                    <div className={styles.row}>
+                        <div className={styles.colm_logo}>
                             <img src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg" alt="Logo"/>
                             <h2>Facebook helps you connect and share with the people in your life.</h2>
                         </div>
-                        <div className={login.colm_form}>
-                            <div className={login.form_container}>
+                        <div className={styles.colm_form}>
+                            <div className={styles.form_container}>
                                 <input type="text" placeholder="Email address or phone number"/>
                                 <input type="password" placeholder="Password"/>
-                                <button className={login.btn_login}>Login</button>
+                                <button className={styles.btn_login}>Login</button>
                                 <Link to="/videos">Forgotten password?</Link>
-                                <button className={login.btn_new}>Create new Account</button>
+                                <button className={styles.btn_new}>Create new Account</button>
                             </div>
                             <p><Link to="videos"><b>Create a Page</b></Link> for a celebrity, brand or business.</p>
                         </div>
                     </div>
                 </main>
                 <footer>
-                    <div className={login.footer_contents}>
+                    <div className={styles.footer_contents}>
                         <ol>
                             <li>English (UK)</li>
                             <li><Link to="/videos">മലയാളം</Link></li>

@@ -5,6 +5,8 @@ import { Hooktest } from "./pages/hooklab/Hooktest";
 import { VideoIndex } from "./pages/video/VideoIndex";
 import { VideoShow } from "./pages/video/VideoShow";
 import { Login } from "./pages/auth/Login";
+import { Signup } from "./pages/auth/Signup";
+import { TrackIpIndex } from "./pages/trackip/TrackIpIndex";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
       <Route path="/videos" element={<VideoIndex />} />
       <Route path="/videos/:videoId" element={<VideoShow />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Signup />} />
+      <Route path="/ip" element={<TrackIpIndex />} />
     </Routes>
   );
 }

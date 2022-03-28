@@ -1,43 +1,42 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-export function VideoIndex() {
-  const [videos, setVideos] = useState([]);
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { retrieveVideos, setVideo } from './videoSlice';
+import store from '../../app/store';
 
+export function VideoIndex() {
+  let navigate = useNavigate();
+  const videoState = useSelector((state) => state.videos);
+  async function fetchData() {
+    await store.dispatch(retrieveVideos());
+    console.log('State videoState is:', videoState);
+  }
   useEffect(() => {
-    async function fetchVideos() {
-      const response = await fetch(
-        "https://tranquil-escarpment-45721.herokuapp.com/videos/all"
-      );
-      const json = await response.json();
-      console.log("Response info is: ", json);
-      setVideos(json);
-    }
-    fetchVideos();
+    fetchData();
   }, []);
 
-  const handleClick = async (e) => {
-    e.preventDefault();
-    console.log("You have click item: ", e.currentTarget.id);
-    const id = e.currentTarget.id;
-    let filtered = await videos.filter(function (item) {
-      return item.id !== parseInt(id);
-    });
-    console.log(filtered);
-    setVideos(filtered);
+  const handleClick = async (item) => {
+    await store.dispatch(setVideo(item));
+    // console.log("You have click item: ",item);
+    console.log('State videoState is:', videoState.video);
+    navigate(`/videos/${item.id}`);
   };
 
   return (
-    <div className="container">
-      <div className="row">
+    <div className='container'>
+      <div className='row'>
         <div>
-          {videos.map((item) => (
-            <div key={item.id} style={{ display: "inline-block" }}>
-              <Link to={`/videos/${item.id}`} key={item.id}>
-                <img src={item.urlThumb} alt="null" width="200px"></img>
-              </Link>
-              <div id={item.id} value={item} onClick={handleClick}>
-                <div>{item.name}</div>
-                <div>{item.cost}</div>
+          {videoState.videos.map((item) => (
+            <div key={item.id} style={{ display: 'inline-block' }}>
+              <img
+                src={item.urlThumb}
+                alt='null'
+                width='200px'
+                onClick={() => handleClick(item)}
+              ></img>
+              <div id={item.id} value={item}>
+                <h4>{item.name}</h4>
+                <span>{item.user}</span> <span>{item.views} views</span>
               </div>
             </div>
           ))}
