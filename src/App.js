@@ -17,7 +17,7 @@ function App() {
       <Route path="/videos/:videoId" element={<VideoShow />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Signup />} />
-      <Route path="/ip" element={<TrackIpIndex />} />
+      <Route path="/ips" element={<TrackIpIndex />} />
     </Routes>
   );
 }
