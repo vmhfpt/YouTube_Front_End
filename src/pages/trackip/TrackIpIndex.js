@@ -44,7 +44,7 @@ export function TrackIpIndex() {
     }
     fetchIps();
     create();
-  }, []);
+  }, ['ips','ip']);
 
   return (
     <div className='container-fluid'>
