@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
-const { detect } = require("detect-browser");
+const { detect } = require('detect-browser');
 
 export function TrackIpIndex() {
   const browser = detect();
@@ -18,7 +19,6 @@ export function TrackIpIndex() {
       setIps(json);
     }
 
-
     async function create() {
       if (browser) {
         setBrowser(browser.name);
@@ -26,9 +26,9 @@ export function TrackIpIndex() {
         const response = await fetch(
           `${process.env.REACT_APP_BACKEND_URL}/ips/get-detail`,
           {
-            method: "POST",
+            method: 'POST',
             headers: {
-              "Content-Type": "application/json",
+              'Content-Type': 'application/json',
             },
             body: JSON.stringify({
               nameOs: browser.os,
@@ -44,7 +44,7 @@ export function TrackIpIndex() {
     }
     fetchIps();
     create();
-  }, ['ips','ip']);
+  }, []);
 
   return (
     <div className='container-fluid'>
@@ -72,22 +72,25 @@ export function TrackIpIndex() {
               </tr>
             </thead>
             <tbody>
-              {ips.slice().reverse().map((item, index) => (
-                <tr key={item.id}>
-                  <th scope='row'>{index}</th>
-                  <th>{item.osName}</th>
-                  <th>{item.browserName}</th>
-                  <th>{item.ipValue}</th>
-                  <th>{item.city}</th>
-                  <th>{item.region}</th>
-                  <th>{item.country}</th>
-                  <th>{item.isp}</th>
-                  <th>{item.width}</th>
-                  <th>{item.height}</th>
-                  <th>{item.underTunnel}</th>
-                  <th>{item.createdAt}</th>
-                </tr>
-              ))}
+              {ips
+                .slice()
+                .reverse()
+                .map((item, index) => (
+                  <tr key={item.id}>
+                    <th scope='row'>{index}</th>
+                    <th>{item.osName}</th>
+                    <th>{item.browserName}</th>
+                    <th>{item.ipValue}</th>
+                    <th>{item.city}</th>
+                    <th>{item.region}</th>
+                    <th>{item.country}</th>
+                    <th>{item.isp}</th>
+                    <th>{item.width}</th>
+                    <th>{item.height}</th>
+                    <th>{item.underTunnel}</th>
+                    <th>{item.createdAt}</th>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
