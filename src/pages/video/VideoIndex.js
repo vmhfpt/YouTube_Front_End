@@ -23,24 +23,25 @@ export function VideoIndex() {
   };
 
   return (
-    <div className='container'>
-      <div className='row'>
-        <div>
-          {videoState.videos.map((item) => (
-            <div key={item.id} style={{ display: 'inline-block' }}>
-              <img
-                src={item.urlThumb}
-                alt='null'
-                width='200px'
-                onClick={() => handleClick(item)}
-              ></img>
-              <div id={item.id} value={item}>
-                <h4>{item.name}</h4>
-                <span>{item.user}</span> <span>{item.views} views</span>
-              </div>
+    <div className='container mx-auto'>
+      <div className='grid md:grid-cols-3 gap-4 sm:grid-cols-1'>
+        {videoState.videos.map((item) => (
+          <div key={item.id} style={{ display: 'inline-block' }} className='px-3'>
+            <img
+              className='rounded-lg'
+              src={item.urlThumb}
+              alt='null'
+              width='100%'
+              height='auto'
+              onClick={() => handleClick(item)}
+            ></img>
+            <div id={item.id} value={item}>
+              <h4 class='font-bold'>{item.name}</h4>
+              <span>{item.user}</span>{' '}
+              <span class='italic'>{item.views} views</span>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );
