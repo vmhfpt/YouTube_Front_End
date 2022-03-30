@@ -11,9 +11,9 @@ import { TrackIpIndex } from "./pages/trackip/TrackIpIndex";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Counter />} />
+      <Route path="/" element={<VideoIndex />} />
+      <Route path="/redux" element={<Counter />} />
       <Route path="/hook-test" element={<Hooktest />} />
-      <Route path="/videos" element={<VideoIndex />} />
       <Route path="/videos/:videoId" element={<VideoShow />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Signup />} />
