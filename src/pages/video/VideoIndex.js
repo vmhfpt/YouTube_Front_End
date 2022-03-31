@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { retrieveVideos, setVideo } from './videoSlice';
+import { Navbar } from '../../components/Navbar';
 import store from '../../app/store';
 
 export function VideoIndex() {
@@ -24,6 +25,7 @@ export function VideoIndex() {
 
   return (
     <div className='container mx-auto'>
+      <Navbar></Navbar>
       <div className='grid md:grid-cols-3 gap-4 sm:grid-cols-1'>
         {videoState.videos.map((item) => (
           <div key={item.id} style={{ display: 'inline-block' }} className='px-3'>
