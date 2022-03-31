@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export function Navbar() {
   return (
     <nav class='bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800'>
@@ -101,7 +102,7 @@ export function Navbar() {
         </div>
         <button
           id='dropdownDefault'
-          data-dropdown-toggle='dropdownbt'
+          data-dropdown-toggle='dropdown_bt'
           class='flex items-center md:order-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
           type='button'
         >
@@ -122,7 +123,7 @@ export function Navbar() {
           </svg>
         </button>
         <div
-          id='dropdownbt'
+          id='dropdown_bt'
           class='hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700'
         >
           <ul
@@ -154,12 +155,12 @@ export function Navbar() {
               </a>
             </li>
             <li>
-              <a
-                href='/'
+              <Link
+                to='/login'
                 class='block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
               >
-                Sign out
-              </a>
+                Login
+              </Link>
             </li>
           </ul>
         </div>
