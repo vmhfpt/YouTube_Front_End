@@ -11,10 +11,11 @@ export const retrieveVideos = createAsyncThunk('videos/retrieve', async () => {
   return response;
 });
 
-export const updateVideo = createAsyncThunk('videos/update', async () => {
-  const response = await VideoService.updateView();
+export const updateView = createAsyncThunk('videos/update', async (videoId) => {
+  const response = await VideoService.updateView(videoId);
   return response;
 });
+
 ///////////////////////////////////////////////////////////
 export const videoSlice = createSlice({
   name: 'videos',
@@ -30,8 +31,7 @@ export const videoSlice = createSlice({
       .addCase(retrieveVideos.fulfilled, (state, action) => {
         state.videos = action.payload;
       })
-      .addCase(updateVideo.fulfilled, (action) => {
-      });
+      .addCase(updateView.fulfilled, (action) => {});
   },
 });
 

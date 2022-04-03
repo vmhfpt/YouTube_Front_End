@@ -60,7 +60,7 @@ export function Signup() {
               {...register('name')}
             />
             {errors?.name?.type === 'required' && (
-              <p className='text-red-600/100'>This field is required</p>
+              <p className='text-red-600/100'>Name is require</p>
             )}
             <input
               type='email'
@@ -70,7 +70,7 @@ export function Signup() {
               className='block border border-grey-light w-full p-3 rounded mb-4'
             />
             {errors?.email?.type === 'required' && (
-              <p className='text-red-600/100'>This field is required</p>
+              <p className='text-red-600/100'>Email is required</p>
             )}
             <input
               type='password'
