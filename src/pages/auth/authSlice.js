@@ -1,40 +1,47 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getAll, updateView } from '../../services/VideoService';
+import AuthService from '../../services/AuthService';
 
 export const authState = {
-  video: {},
-  videos: [],
+  user: {},
+  isLogin: false,
+  accessToken: '',
 };
 ///////////////////ACTIONS OF REDUX///////////////////////
-export const retrieveVideos = createAsyncThunk('videos/retrieve', async () => {
-  const response = await getAll();
+export const signup = createAsyncThunk('auth/signup', async (user) => {
+  delete user.confirm_password;
+  const response = await AuthService.register(user);
   return response;
 });
 
-export const updateVideo = createAsyncThunk('videos/update', async () => {
-  const response = await updateView();
+export const login = createAsyncThunk('auth/login', async (user) => {
+  const response = await AuthService.login(user);
   return response;
 });
 ///////////////////////////////////////////////////////////
+
 export const authSlice = createSlice({
-  name: 'video',
+  name: 'auth',
   initialState: authState,
   reducers: {
-    setVideo: (state, action) => {
-      state.video = action.payload;
-      // console.log(action.payload);
+    setUser: (state, action) => {
+      console.log('Log ~ Running in set User action.payload', action.payload);
+      state.user = action.payload.user;
+      state.isLogin = true;
+      state.accessToken = action.payload.accessToken;
+      return state;
+    },
+    removeUser: (state) => {
+      state.user = {};
+      state.accessToken = '';
+      state.isLogin = false;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(retrieveVideos.fulfilled, (state, action) => {
-        state.videos = action.payload;
-      })
-      .addCase(updateVideo.fulfilled, (action) => {
-      });
+      .addCase(login.fulfilled, async (state, action) => {})
+      .addCase(signup.fulfilled, (action) => {});
   },
 });
 
-export const { setVideo } = authSlice.actions;
-// export const selectVideos = (state) => state.video.videos;
+export const { setUser, removeUser } = authSlice.actions;
 export default authSlice.reducer;

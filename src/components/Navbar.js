@@ -1,5 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
+import { NotificationManager } from 'react-notifications';
+import { useSelector } from 'react-redux';
+import 'react-notifications/lib/notifications.css';
+
+import store from '../app/store';
+import { removeUser } from '../pages/auth/authSlice';
+
 export function Navbar() {
+  let navigate = useNavigate();
+  const authState = useSelector((state) => state.auth);
+  const onLogout = async (data) => {
+    store.dispatch(removeUser());
+    NotificationManager.success('Logout success', 'Logout Info');
+    setTimeout(() => {
+      navigate(`/`);
+    }, 2000);
+  };
   return (
     <nav class='bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800'>
       <div class='container flex flex-wrap justify-between items-center mx-auto'>
@@ -106,7 +122,7 @@ export function Navbar() {
           class='flex items-center md:order-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
           type='button'
         >
-          Dropdown button{' '}
+          Profile{' '}
           <svg
             class='ml-2 w-4 h-4'
             fill='none'
@@ -146,22 +162,38 @@ export function Navbar() {
                 Settings
               </a>
             </li>
-            <li>
-              <a
-                href='/'
-                class='block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-              >
-                Earnings
-              </a>
-            </li>
-            <li>
-              <Link
-                to='/login'
-                class='block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-              >
-                Login
-              </Link>
-            </li>
+            {!authState.isLogin && (
+              <li>
+                <a
+                  href='/register'
+                  class='block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                >
+                  Register
+                </a>
+              </li>
+            )}
+            {!authState.isLogin && (
+              <li>
+                <Link
+                  to='/login'
+                  class='block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                >
+                  Login
+                </Link>
+              </li>
+            )}
+
+            {authState.isLogin && (
+              <li>
+                <a
+                  onClick={() => onLogout()}
+                  href='/'
+                  class='block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                >
+                  Logout
+                </a>
+              </li>
+            )}
           </ul>
         </div>
       </div>

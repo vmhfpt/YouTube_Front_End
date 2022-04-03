@@ -1,111 +1,140 @@
-// import { Link } from "react-router-dom";
-import logo from './register.png'; 
+import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+import { NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+
+import store from '../../app/store';
+import { signup } from './authSlice';
+
 export function Signup() {
+  let navigate = useNavigate();
+  const formSchema = Yup.object().shape({
+    password: Yup.string()
+      .required('Password is require')
+      .min(3, 'Password must be at 3 char long'),
+    confirm_password: Yup.string()
+      .required('Password is require')
+      .oneOf([Yup.ref('password')], 'Passwords does not match'),
+  });
+  const formOptions = { resolver: yupResolver(formSchema) };
+  const { register, handleSubmit, formState } = useForm(formOptions);
+  const { errors } = formState;
+
+  const onRegister = async (data) => {
+    let result = await store.dispatch(signup(data));
+    if (result.payload.status === true) {
+      NotificationManager.success(result.payload.message, 'SignIn Info');
+      setTimeout(() => {
+        navigate(`/login`);
+      }, 2000);
+    } else {
+      NotificationManager.error(result.payload.message, 'SignIn Info');
+    }
+    console.log('Log ~ onRegister ~ result', result.payload);
+  };
+
   return (
-    <section className='vh-100' style={{ backgroundColor: ' #eee' }}>
-      <div className='container h-100'>
-        <div className='row d-flex justify-content-center align-items-center h-100'>
-          <div className='col-lg-12 col-xl-11'>
-            <div
-              classNameName='card text-black'
-              style={{ borderRadius: '25px' }}
-            >
-              <div className='card-body p-md-5'>
-                <div className='row justify-content-center'>
-                  <div className='col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1'>
-                    <p className='text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4'>
-                      Sign up
-                    </p>
+    <div
+      className='h-screen overflow-hidden flex items-center justify-center'
+      style={{ background: '#edf2f7' }}
+    >
+      <div className='bg-grey-lighter min-h-screen flex flex-col'>
+        <div className='container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2'>
+          <form
+            className='bg-white px-6 py-8 rounded shadow-md text-black w-full'
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <h1 className='mb-8 text-3xl text-center'>Sign up</h1>
+            <input
+              type='text'
+              className='block border border-grey-light w-full p-3 rounded mb-4'
+              placeholder='Full Name'
+              {...register('name', {
+                required: true,
+                maxLength: 50,
+              })}
+            />
+            {errors?.name?.type === 'required' && (
+              <p className='text-red-600/100'>This field is required</p>
+            )}
+            <input
+              type='email'
+              placeholder='Email'
+              {...register('email', {
+                required: true,
+                maxLength: 50,
+              })}
+              className='block border border-grey-light w-full p-3 rounded mb-4'
+            />
+            {errors?.email?.type === 'required' && (
+              <p className='text-red-600/100'>This field is required</p>
+            )}
+            <input
+              type='password'
+              name='password'
+              placeholder='Password'
+              {...register('password')}
+              className={`block border border-grey-light w-full p-3 rounded mb-4 ${
+                errors.password ? 'focus:invalid:border-red-500' : ''
+              }`}
+            />
+            {errors.password && (
+              <p className='text-red-600/100'>{errors.password.message}</p>
+            )}
+            <input
+              type='password'
+              name='confirm_password'
+              placeholder='Confirm Password'
+              {...register('confirm_password')}
+              className={`block border border-grey-light w-full p-3 rounded mb-4 ${
+                errors.confirm_password ? 'focus:invalid:border-red-500' : ''
+              }`}
+            />
+            {errors.confirm_password && (
+              <p className='text-red-600/100'>
+                {errors.confirm_password.message}
+              </p>
+            )}
+            <input
+              type='submit'
+              onClick={handleSubmit(onRegister)}
+              className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-auto'
+              value='Create Account'
+            />
 
-                    <form className='mx-1 mx-md-4'>
-                      <div className='d-flex flex-row align-items-center mb-4'>
-                        <i className='fas fa-user fa-lg me-3 fa-fw'></i>
-                        <div className='form-outline flex-fill mb-0'>
-                          <input
-                            type='text'
-                            id='form3Example1c'
-                            className='form-control'
-                          />
-                          <label className='form-label' for='form3Example1c'>
-                            Your Name
-                          </label>
-                        </div>
-                      </div>
-
-                      <div className='d-flex flex-row align-items-center mb-4'>
-                        <i className='fas fa-envelope fa-lg me-3 fa-fw'></i>
-                        <div className='form-outline flex-fill mb-0'>
-                          <input
-                            type='email'
-                            id='form3Example3c'
-                            className='form-control'
-                          />
-                          <label className='form-label' for='form3Example3c'>
-                            Your Email
-                          </label>
-                        </div>
-                      </div>
-
-                      <div className='d-flex flex-row align-items-center mb-4'>
-                        <i className='fas fa-lock fa-lg me-3 fa-fw'></i>
-                        <div className='form-outline flex-fill mb-0'>
-                          <input
-                            type='password'
-                            id='form3Example4c'
-                            className='form-control'
-                          />
-                          <label className='form-label' for='form3Example4c'>
-                            Password
-                          </label>
-                        </div>
-                      </div>
-
-                      <div className='d-flex flex-row align-items-center mb-4'>
-                        <i className='fas fa-key fa-lg me-3 fa-fw'></i>
-                        <div className='form-outline flex-fill mb-0'>
-                          <input
-                            type='password'
-                            id='form3Example4cd'
-                            className='form-control'
-                          />
-                          <label className='form-label' for='form3Example4cd'>
-                            Repeat your password
-                          </label>
-                        </div>
-                      </div>
-
-                      <div className='form-check d-flex justify-content-center mb-5'>
-                        <input
-                          className='form-check-input me-2'
-                          type='checkbox'
-                          value=''
-                          id='form2Example3c'
-                        />
-                        <label className='form-check-label' for='form2Example3'>
-                          I agree all statements in{' '}
-                          <a href='#!'>Terms of service</a>
-                        </label>
-                      </div>
-
-                      <div className='d-flex justify-content-center mx-4 mb-3 mb-lg-4'>
-                        <button
-                          type='button'
-                          className='btn btn-primary btn-lg'
-                        >
-                          Register
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                  <div className='col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2'>
-                    <img src={logo} className="img-fluid" alt="Sample"/>
-                  </div>
-                </div>
-              </div>
+            <div className='text-center text-sm text-grey-dark mt-4'>
+              By signing up, you agree to the
+              <Link
+                className='no-underline border-b border-grey-dark text-grey-dark'
+                to='/'
+              >
+                Terms of Service
+              </Link>{' '}
+              and
+              <Link
+                className='no-underline border-b border-grey-dark text-grey-dark'
+                to='/'
+              >
+                Privacy Policy
+              </Link>
             </div>
+          </form>
+
+          <div className='text-grey-dark mt-6'>
+            Already have an account?
+            <Link
+              className='no-underline border-b border-blue text-blue'
+              to='/login'
+            >
+              Log in
+            </Link>
+            .
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

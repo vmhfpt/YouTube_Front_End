@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getAll, updateView } from '../../services/VideoService';
+import VideoService from '../../services/VideoService';
 
 export const videoState = {
   video: {},
@@ -7,17 +7,17 @@ export const videoState = {
 };
 ///////////////////ACTIONS OF REDUX///////////////////////
 export const retrieveVideos = createAsyncThunk('videos/retrieve', async () => {
-  const response = await getAll();
+  const response = await VideoService.getAll();
   return response;
 });
 
 export const updateVideo = createAsyncThunk('videos/update', async () => {
-  const response = await updateView();
+  const response = await VideoService.updateView();
   return response;
 });
 ///////////////////////////////////////////////////////////
 export const videoSlice = createSlice({
-  name: 'video',
+  name: 'videos',
   initialState: videoState,
   reducers: {
     setVideo: (state, action) => {

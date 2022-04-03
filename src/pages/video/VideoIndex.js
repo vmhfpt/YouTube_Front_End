@@ -10,7 +10,7 @@ export function VideoIndex() {
   const videoState = useSelector((state) => state.videos);
   async function fetchData() {
     await store.dispatch(retrieveVideos());
-    console.log('State videoState is:', videoState);
+    // console.log('State videoState is:', videoState);
   }
   useEffect(() => {
     fetchData();
@@ -19,7 +19,7 @@ export function VideoIndex() {
   const handleClick = async (item) => {
     await store.dispatch(setVideo(item));
     // console.log("You have click item: ",item);
-    console.log('State videoState is:', videoState.video);
+    // console.log('State videoState is:', videoState.video);
     navigate(`/videos/${item.id}`);
   };
 

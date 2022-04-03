@@ -1,8 +1,11 @@
-export async function getAll() {
-  const response = await fetch(
-    `${process.env.REACT_APP_BACKEND_URL}/videos/all`
-  );
-  const result = await response.json();
-  return result;
+class VideoService {
+  async getAll() {
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/videos/all`
+    );
+    const result = await response.json();
+    return result;
+  }
+  async updateView() {}
 }
-export async function updateView() {}
+export default new VideoService();
