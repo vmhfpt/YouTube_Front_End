@@ -12,6 +12,10 @@ import { signup } from './authSlice';
 export function Signup() {
   let navigate = useNavigate();
   const formSchema = Yup.object().shape({
+    name: Yup.string()
+      .required('name is require')
+      .min(3, 'Name must be at 3 char long'),
+    email: Yup.string().required('email is require'),
     password: Yup.string()
       .required('Password is require')
       .min(3, 'Password must be at 3 char long'),
@@ -50,23 +54,19 @@ export function Signup() {
             <h1 className='mb-8 text-3xl text-center'>Sign up</h1>
             <input
               type='text'
+              name='name'
               className='block border border-grey-light w-full p-3 rounded mb-4'
               placeholder='Full Name'
-              {...register('name', {
-                required: true,
-                maxLength: 50,
-              })}
+              {...register('name')}
             />
             {errors?.name?.type === 'required' && (
               <p className='text-red-600/100'>This field is required</p>
             )}
             <input
               type='email'
+              name='email'
               placeholder='Email'
-              {...register('email', {
-                required: true,
-                maxLength: 50,
-              })}
+              {...register('email')}
               className='block border border-grey-light w-full p-3 rounded mb-4'
             />
             {errors?.email?.type === 'required' && (
