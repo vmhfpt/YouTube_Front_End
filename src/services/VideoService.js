@@ -24,16 +24,16 @@ class VideoService {
     return result;
   }
   async uploadComment(comment) {
-    console.log('Log ~ uploadComment ~ comment', comment)
+    console.log('Log ~ uploadComment ~ comment', comment);
     const token = comment.token;
     delete comment.token;
     const result = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/videos/upload-comment`,
+      comment,
       {
         headers: {
           Authorization: token,
         },
-        data: comment,
       }
     );
     return result.data;
