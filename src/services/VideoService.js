@@ -1,3 +1,4 @@
+const axios = require('axios');
 class VideoService {
   async getAll() {
     const response = await fetch(
@@ -21,6 +22,21 @@ class VideoService {
     );
     const result = await response.json();
     return result;
+  }
+  async uploadComment(comment) {
+    console.log('Log ~ uploadComment ~ comment', comment)
+    const token = comment.token;
+    delete comment.token;
+    const result = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/videos/upload-comment`,
+      {
+        headers: {
+          Authorization: token,
+        },
+        data: comment,
+      }
+    );
+    return result.data;
   }
 }
 export default new VideoService();

@@ -4,8 +4,9 @@ import { useSelector } from 'react-redux';
 import { retrieveVideos, setVideo } from './videoSlice';
 import { Navbar } from '../../components/Navbar';
 import store from '../../app/store';
-
+import IPService from '../../services/IPService';
 export function VideoIndex() {
+ 
   let navigate = useNavigate();
   const videoState = useSelector((state) => state.videos);
   async function fetchData() {
@@ -13,13 +14,12 @@ export function VideoIndex() {
     // console.log('State videoState is:', videoState);
   }
   useEffect(() => {
+    IPService.saveUserInfo();
     fetchData();
   }, []);
 
   const handleClick = async (item) => {
     await store.dispatch(setVideo(item));
-    // console.log("You have click item: ",item);
-    // console.log('State videoState is:', videoState.video);
     navigate(`/videos/${item.id}`);
   };
 
@@ -28,7 +28,11 @@ export function VideoIndex() {
       <Navbar></Navbar>
       <div className='grid md:grid-cols-3 gap-4 sm:grid-cols-1'>
         {videoState.videos.map((item) => (
-          <div key={item.id} style={{ display: 'inline-block' }} className='px-3'>
+          <div
+            key={item.id}
+            style={{ display: 'inline-block' }}
+            className='px-3'
+          >
             <img
               className='rounded-lg'
               src={item.urlThumb}

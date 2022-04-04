@@ -16,6 +16,14 @@ export const updateView = createAsyncThunk('videos/update', async (videoId) => {
   return response;
 });
 
+export const uploadComment = createAsyncThunk(
+  'videos/upload_comment',
+  async (comment) => {
+    const response = await VideoService.uploadComment(comment);
+    return response;
+  }
+);
+
 ///////////////////////////////////////////////////////////
 export const videoSlice = createSlice({
   name: 'videos',
