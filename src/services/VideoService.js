@@ -27,16 +27,29 @@ class VideoService {
     console.log('Log ~ uploadComment ~ comment', comment);
     const token = comment.token;
     delete comment.token;
-    const result = await axios.post(
+    // const result = await axios.post(
+    //   `${process.env.REACT_APP_BACKEND_URL}/videos/upload-comment`,
+    //   comment,
+    //   {
+    //     headers: {
+    //       Authorization: token,
+    //     },
+    //   }
+    // );
+    // return result.data;
+    const response = await fetch(
       `${process.env.REACT_APP_BACKEND_URL}/videos/upload-comment`,
-      comment,
       {
+        method: 'POST',
         headers: {
           Authorization: token,
         },
+        body: JSON.stringify(comment),
       }
     );
-    return result.data;
+    const result = await response.json();
+    console.log('Log ~ uploadComment ~ result', result);
+    return result;
   }
 }
 export default new VideoService();

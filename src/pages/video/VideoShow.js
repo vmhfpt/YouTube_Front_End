@@ -21,15 +21,11 @@ export function VideoShow() {
   let params = useParams();
 
   const onComment = async (data) => {
-    // alert(JSON.stringify(data));
-    // console.log('Log ~ onComment ~ authState.accessToken', authState.accessToken);
-    // console.log('Log ~ onComment ~ data.content_comment', data.content_comment)
     const comment = {
       videoId: params.videoId,
       content: data.content_comment,
       token: `Bearer ${authState.accessToken}`,
     };
-    console.log('Log ~ onComment ~ comment', comment);
     await store.dispatch(uploadComment(comment));
   };
 
