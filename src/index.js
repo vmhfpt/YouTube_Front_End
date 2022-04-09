@@ -9,6 +9,9 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import { NotificationContainer } from 'react-notifications';
 
+import './index.css';
+import 'flowbite';
+
 let persistor = persistStore(store);
 
 ReactDOM.render(
