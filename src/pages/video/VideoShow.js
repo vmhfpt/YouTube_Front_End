@@ -94,7 +94,7 @@ export function VideoShow() {
       {videoState.comments.map((item) => (
           <div
             key={item.id}
-            className='px-3'
+            className='px-2'
           >
             <div id={item.id} value={item}>
               <h4 class='font-bold'>{item.user.name}</h4>
