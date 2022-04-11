@@ -42,15 +42,15 @@ export function VideoShow() {
     await store.dispatch(getCommentsByVideoId(params.videoId));
   }
 
+  async function playVideo() {
+    let videoElem = document.getElementById("video");
+    try {
+      await videoElem.play();
+    } catch (err) {}
+  }
   useEffect(() => {
     fetchComments();
-    let videoElem = document.getElementById("video");
     playVideo();
-    async function playVideo() {
-      try {
-        await videoElem.play();
-      } catch (err) {}
-    }
   }, []);
   return (
     <div className="container mx-auto">
@@ -91,18 +91,15 @@ export function VideoShow() {
           <p className="text-red-600/100">{errors.content_comment.message}</p>
         )}
       </form>
-      {videoState.comments.map((item) => (
-          <div
-            key={item.id}
-            className='px-2'
-          >
-            <div id={item.id} value={item}>
-              <h4 class='font-bold'>{item.user.name}</h4>
-              <span>{item.createdAt}</span>{' '}
-              <span class='italic'>{item.content}</span>
-            </div>
+      {videoState.comments?.map((item) => (
+        <div key={item.id} className="px-2">
+          <div id={item.id} value={item}>
+            <h4 class="font-bold">{item.user.name}</h4>
+            <span>{item.createdAt}</span>{" "}
+            <span class="italic">{item.content}</span>
           </div>
-        ))}
+        </div>
+      ))}
     </div>
   );
 }
