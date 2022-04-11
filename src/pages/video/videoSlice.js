@@ -1,23 +1,28 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import VideoService from '../../services/VideoService';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import VideoService from "../../services/VideoService";
 
 export const videoState = {
   video: {},
+  comments: [],
   videos: [],
 };
 ///////////////////ACTIONS OF REDUX///////////////////////
-export const retrieveVideos = createAsyncThunk('videos/retrieve', async () => {
+export const retrieveVideos = createAsyncThunk("videos/retrieve", async () => {
   const response = await VideoService.getAll();
   return response;
 });
 
-export const updateView = createAsyncThunk('videos/update', async (videoId) => {
-  const response = await VideoService.updateView(videoId);
-  return response;
-});
+
+export const getCommentsByVideoId = createAsyncThunk(
+  "videos/get_comments",
+  async (videoId) => {
+    const response = await VideoService.getCommentsByVideoId(videoId);
+    return response;
+  }
+);
 
 export const uploadComment = createAsyncThunk(
-  'videos/upload_comment',
+  "videos/upload_comment",
   async (comment) => {
     const response = await VideoService.uploadComment(comment);
     return response;
@@ -26,7 +31,7 @@ export const uploadComment = createAsyncThunk(
 
 ///////////////////////////////////////////////////////////
 export const videoSlice = createSlice({
-  name: 'videos',
+  name: "videos",
   initialState: videoState,
   reducers: {
     setVideo: (state, action) => {
@@ -39,7 +44,10 @@ export const videoSlice = createSlice({
       .addCase(retrieveVideos.fulfilled, (state, action) => {
         state.videos = action.payload;
       })
-      .addCase(updateView.fulfilled, (action) => {});
+      .addCase(getCommentsByVideoId.fulfilled, (state, action) => {
+        state.comments = action.payload;
+        console.log("file: videoSlice.js ~ line 53 ~ .addCase ~ state.comments", state.comments);
+      })
   },
 });
 
