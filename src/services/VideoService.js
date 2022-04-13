@@ -9,7 +9,6 @@ class VideoService {
     return result;
   }
   async uploadComment(comment) {
-    console.log("Log ~ uploadComment ~ comment", comment);
     const token = comment.token;
     delete comment.token;
     const result = await axios.post(
@@ -21,7 +20,6 @@ class VideoService {
         },
       }
     );
-    console.log("result.data", result.data);
     return result.data;
   }
   async getCommentsByVideoId(videoId) {

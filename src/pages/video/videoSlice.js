@@ -12,7 +12,6 @@ export const retrieveVideos = createAsyncThunk("videos/retrieve", async () => {
   return response;
 });
 
-
 export const getCommentsByVideoId = createAsyncThunk(
   "videos/get_comments",
   async (videoId) => {
@@ -38,6 +37,9 @@ export const videoSlice = createSlice({
       state.video = action.payload;
       // console.log(action.payload);
     },
+    addAnComment: (state, action) => {
+      state.comments.push(action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -46,11 +48,14 @@ export const videoSlice = createSlice({
       })
       .addCase(getCommentsByVideoId.fulfilled, (state, action) => {
         state.comments = action.payload;
-        console.log("file: videoSlice.js ~ line 53 ~ .addCase ~ state.comments", state.comments);
-      })
+        console.log(
+          "file: videoSlice.js ~ line 53 ~ .addCase ~ state.comments",
+          state.comments
+        );
+      });
   },
 });
 
-export const { setVideo } = videoSlice.actions;
+export const { setVideo, addAnComment } = videoSlice.actions;
 // export const selectVideos = (state) => state.video.videos;
 export default videoSlice.reducer;

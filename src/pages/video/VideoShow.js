@@ -1,13 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import React, { useEffect } from "react";
-import { uploadComment, getCommentsByVideoId } from "./videoSlice";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { io } from "socket.io-client";
-
 import { Navbar } from "../../components/Navbar";
-
 import store from "../../app/store";
+import {
+  uploadComment,
+  // addAnComment,
+  getCommentsByVideoId,
+} from "./videoSlice";
 
 export function VideoShow() {
   const {
@@ -19,24 +21,7 @@ export function VideoShow() {
   const videoState = useSelector((state) => state.videos);
   const authState = useSelector((state) => state.auth);
   let params = useParams();
-
-  const socket = io();
-
-  // socket.on("chat message", function (msg) {
-  //   var item = document.createElement("li");
-  //   item.textContent = msg;
-  //   messages.appendChild(item);
-  //   window.scrollTo(0, document.body.scrollHeight);
-  // });
-
-  const onComment = async (data) => {
-    const comment = {
-      videoId: params.videoId,
-      content: data.content_comment,
-      token: `Bearer ${authState.accessToken}`,
-    };
-    await store.dispatch(uploadComment(comment));
-  };
+  const [socket, setSocket] = useState({});
 
   async function fetchComments() {
     await store.dispatch(getCommentsByVideoId(params.videoId));
@@ -48,10 +33,39 @@ export function VideoShow() {
       await videoElem.play();
     } catch (err) {}
   }
+
+
   useEffect(() => {
-    fetchComments();
+    const newSocket = io(process.env.REACT_APP_BACKEND_URL, {
+      auth: {
+        token: `Bearer ${authState.accessToken}`,
+      },
+    });
+    setSocket(newSocket);
+    socket.on("connect", () => {
+      console.log("client connected", socket.id);
+    });
+    socket.on("connect_error", () => {
+      console.log("there are some error please try again later");
+      socket.close();
+    });
+    socket.on("responseMessageFromServe", (msg) => {
+      console.log("~ msg from serve is", msg);
+    });
+    // fetchComments();
     playVideo();
-  }, []);
+    return () => newSocket.close();
+  }, [setSocket]);
+
+  const onComment = async (data) => {
+    const comment = {
+      videoId: params.videoId,
+      content: data.content_comment,
+      // token: `Bearer ${authState.accessToken}`,
+    };
+    socket.emit("saveMessageToServe", comment);
+    // await store.dispatch(uploadComment(comment));
+  };
   return (
     <div className="container mx-auto">
       <Navbar></Navbar>

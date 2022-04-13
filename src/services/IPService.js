@@ -1,13 +1,13 @@
-const { detect } = require('detect-browser');
-const { UAParser } = require('ua-parser-js');
-var mobile = require('is-mobile');
+const { detect } = require("detect-browser");
+const { UAParser } = require("ua-parser-js");
+var mobile = require("is-mobile");
 var parser = new UAParser();
 let resultDevice = parser.getResult();
 const browser = detect();
 
 class IPService {
   async mobileInfo() {
-    return mobile() === true ? resultDevice.device : {};
+    return mobile() === true ? resultDevice.device : { typeDevice: "Computer" };
   }
   async saveUserInfo() {
     if (browser) {
@@ -15,9 +15,9 @@ class IPService {
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/ips/get-detail`,
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             nameOs: browser.os,
