@@ -2,9 +2,13 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
 import { Navbar } from "../../components/Navbar";
 import store from "../../app/store";
+import {
+  initiateSocketConnection,
+  disconnectSocket,
+} from "../../services/socketio.service";
 import {
   uploadComment,
   // addAnComment,
@@ -21,7 +25,6 @@ export function VideoShow() {
   const videoState = useSelector((state) => state.videos);
   const authState = useSelector((state) => state.auth);
   let params = useParams();
-  const [socket, setSocket] = useState({});
 
   async function fetchComments() {
     await store.dispatch(getCommentsByVideoId(params.videoId));
@@ -34,28 +37,14 @@ export function VideoShow() {
     } catch (err) {}
   }
 
-
   useEffect(() => {
-    const newSocket = io(process.env.REACT_APP_BACKEND_URL, {
-      auth: {
-        token: `Bearer ${authState.accessToken}`,
-      },
-    });
-    setSocket(newSocket);
-    socket.on("connect", () => {
-      console.log("client connected", socket.id);
-    });
-    socket.on("connect_error", () => {
-      console.log("there are some error please try again later");
-      socket.close();
-    });
-    socket.on("responseMessageFromServe", (msg) => {
-      console.log("~ msg from serve is", msg);
-    });
-    // fetchComments();
+    initiateSocketConnection(authState);
+    fetchComments();
     playVideo();
-    return () => newSocket.close();
-  }, [setSocket]);
+    return () => {
+      disconnectSocket();
+    }
+  }, [])
 
   const onComment = async (data) => {
     const comment = {
@@ -63,8 +52,8 @@ export function VideoShow() {
       content: data.content_comment,
       // token: `Bearer ${authState.accessToken}`,
     };
-    socket.emit("saveMessageToServe", comment);
-    // await store.dispatch(uploadComment(comment));
+    // socket.emit("saveMessageToServe", comment);
+    await store.dispatch(uploadComment(comment));
   };
   return (
     <div className="container mx-auto">

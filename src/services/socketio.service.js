@@ -8,7 +8,17 @@ export const initiateSocketConnection = (authState) => {
       token: `Bearer ${authState.accessToken}`,
     },
   });
-  console.log(`Connecting socket...`);
+  // console.log(`Connecting socket...`);
+  socket.on("connect", () => {
+    console.log("client connected", socket.id);
+  });
+  socket.on("connect_error", () => {
+    console.log("there are some error please try again later");
+    socket.close();
+  });
+  socket.on("responseMessageFromServe", (msg) => {
+    console.log("~ msg from serve is", msg);
+  });
 };
 
 export const disconnectSocket = () => {
@@ -19,3 +29,18 @@ export const disconnectSocket = () => {
 export const subscribeToChat = (cb) => {
   socket.emit("my message", "Hello there from React.");
 };
+
+export const sendMessage = ({ message, roomName }, cb) => {
+  if (socket) socket.emit("message", { message, roomName }, cb);
+};
+
+// socket.on("connect", () => {
+//   console.log("client connected", socket.id);
+// });
+// socket.on("connect_error", () => {
+//   console.log("there are some error please try again later");
+//   socket.close();
+// });
+// socket.on("responseMessageFromServe", (msg) => {
+//   console.log("~ msg from serve is", msg);
+// });
