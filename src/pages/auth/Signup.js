@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { NotificationManager } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
 
 import store from '../../app/store';
 import { signup } from './authSlice';

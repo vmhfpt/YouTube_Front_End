@@ -3,7 +3,6 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import { NotificationManager } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
 
 import store from '../../app/store';
 import { login, setUser } from './authSlice';

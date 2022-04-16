@@ -1,16 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-// import { io } from "socket.io-client";
 import { Navbar } from "../../components/Navbar";
 import store from "../../app/store";
 import {
   initiateSocketConnection,
   disconnectSocket,
+  sendMessage,
 } from "../../services/socketio.service";
 import {
-  uploadComment,
+  // uploadComment,
   // addAnComment,
   getCommentsByVideoId,
 } from "./videoSlice";
@@ -43,8 +43,8 @@ export function VideoShow() {
     playVideo();
     return () => {
       disconnectSocket();
-    }
-  }, [])
+    };
+  }, []);
 
   const onComment = async (data) => {
     const comment = {
@@ -52,8 +52,8 @@ export function VideoShow() {
       content: data.content_comment,
       // token: `Bearer ${authState.accessToken}`,
     };
-    // socket.emit("saveMessageToServe", comment);
-    await store.dispatch(uploadComment(comment));
+    sendMessage(comment);
+    // await store.dispatch(uploadComment(comment));
   };
   return (
     <div className="container mx-auto">
@@ -94,6 +94,7 @@ export function VideoShow() {
           <p className="text-red-600/100">{errors.content_comment.message}</p>
         )}
       </form>
+      {/* {JSON.stringify(videoState.comments)} */}
       {videoState.comments?.map((item) => (
         <div key={item.id} className="px-2">
           <div id={item.id} value={item}>

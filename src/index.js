@@ -11,6 +11,7 @@ import { NotificationContainer } from 'react-notifications';
 
 import './index.css';
 import 'flowbite';
+import 'react-notifications/lib/notifications.css';
 
 let persistor = persistStore(store);
 
