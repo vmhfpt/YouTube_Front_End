@@ -1,7 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 import { useSelector } from 'react-redux';
-import 'react-notifications/lib/notifications.css';
 
 import store from '../app/store';
 import { removeUser } from '../pages/auth/authSlice';
@@ -107,12 +106,12 @@ export function Navbar() {
               </a>
             </li>
             <li>
-              <a
-                href='/'
+              <Link
+                to='/video-create'
                 class='block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
               >
-                Services
-              </a>
+                Upload video
+              </Link>
             </li>
           </ul>
         </div>

@@ -60,8 +60,6 @@ export function VideoShow() {
       <Navbar></Navbar>
       <div className="grid md:grid-cols-1">
         <div>
-          <h2>VideoId is: {params.videoId}</h2>
-          {/* {JSON.stringify(videoState.video)} */}
           <video width="750" height="500" id="video" controls>
             <source src={videoState.video.url} type="video/mp4" />
           </video>

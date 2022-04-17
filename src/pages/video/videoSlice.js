@@ -35,12 +35,9 @@ export const videoSlice = createSlice({
   reducers: {
     setVideo: (state, action) => {
       state.video = action.payload;
-      // console.log(action.payload);
     },
     addAnComment: (state, action) => {
-    // console.log("item comment is:", action.payload);
       state.comments.push(action.payload);
-      // console.log("~ state.comments", state.comments);
     },
   },
   extraReducers: (builder) => {

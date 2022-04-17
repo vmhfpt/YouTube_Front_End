@@ -38,5 +38,12 @@ class VideoService {
     const result = await response.json();
     return result;
   }
+  async saveVideoToServe(data) {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/videos/upload`, {
+      method: 'POST',
+      body: data,
+    });
+    console.log('Log ~ response.json()', response.json());
+  }
 }
 export default new VideoService();

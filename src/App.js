@@ -4,6 +4,7 @@ import { Counter } from './pages/counter/Counter';
 import { Hooktest } from './pages/hooklab/Hooktest';
 import { VideoIndex } from './pages/video/VideoIndex';
 import { VideoShow } from './pages/video/VideoShow';
+import { VideoCreate } from './pages/video/VideoCreate';
 import { Login } from './pages/auth/Login';
 import { Signup } from './pages/auth/Signup';
 import { TrackIpIndex } from './pages/trackip/TrackIpIndex';
@@ -18,6 +19,7 @@ function App() {
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Signup />} />
       <Route path='/ips' element={<TrackIpIndex />} />
+      <Route path='/video-create' element={<VideoCreate />} />
     </Routes>
   );
 }
