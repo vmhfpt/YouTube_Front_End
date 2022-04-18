@@ -104,7 +104,7 @@ export function VideoCreate() {
         );
         console.log("Log ~ response.json()", response.json());
       }
-      // sendRequest();
+      sendRequest();
     } else {
       alert("please enter videoname to upload ");
       console.log("please enter videoname");

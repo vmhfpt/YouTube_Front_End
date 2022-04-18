@@ -64,7 +64,7 @@ export function VideoShow() {
             <source src={videoState.video.url} type="video/mp4" />
           </video>
           <h4>{videoState.video.name}</h4>
-          <span>{videoState.video.user}</span>{" "}
+          <span>{videoState.video.user.name}</span>{" "}
           <span>{videoState.video.views} views</span>
         </div>
       </div>
@@ -95,7 +95,21 @@ export function VideoShow() {
       {/* {JSON.stringify(videoState.comments)} */}
       {videoState.comments?.map((item) => (
         <div key={item.id} className="px-2">
-          <div id={item.id} value={item}>
+          <div id={item.id} value={item} style={{ position: "relative" }}>
+            {authState.user.id === item.user.id && (
+              <div style={{ position: "absolute", right: "5px" }}>
+                <span
+                  className="mr-2"
+                  style={{ color: "blue" }}
+                  onClick={() => {}}
+                >
+                  Edit
+                </span>
+                <span style={{ color: "red" }} onClick={() => {}}>
+                  Delete
+                </span>
+              </div>
+            )}
             <h4 class="font-bold">{item.user.name}</h4>
             <span>{item.createdAt}</span>{" "}
             <span class="italic">{item.content}</span>

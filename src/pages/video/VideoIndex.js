@@ -43,7 +43,7 @@ export function VideoIndex() {
             ></img>
             <div id={item.id} value={item}>
               <h4 class='font-bold'>{item.name}</h4>
-              <span>{item.user}</span>{' '}
+              <span>{item.user.name}</span>{' '}
               <span class='italic'>{item.views} views</span>
             </div>
           </div>
