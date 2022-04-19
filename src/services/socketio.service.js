@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 import store from "../app/store";
-import { addAnComment } from "../pages/video/videoSlice";
-import { NotificationManager } from 'react-notifications';
+import { addAnComment, removeAnItem } from "../pages/video/videoSlice";
+import { NotificationManager } from "react-notifications";
 let socket;
 export const initiateSocketConnection = (authState) => {
   socket = io(process.env.REACT_APP_BACKEND_URL, {
@@ -22,8 +22,12 @@ export const initiateSocketConnection = (authState) => {
     console.log("Msg from serve is", msg);
     store.dispatch(addAnComment(msg));
   });
+  socket.on("responseDeleteMessageFromServe", (msg) => {
+    console.log("Msg from serve is", msg);
+    store.dispatch(removeAnItem(msg));
+  });
   socket.on("notifyForClient", (msg) => {
-    NotificationManager.error(msg, 'Login require');
+    NotificationManager.error(msg, "Login require");
   });
 };
 
@@ -34,4 +38,8 @@ export const disconnectSocket = () => {
 
 export const sendMessage = (comment) => {
   if (socket) socket.emit("saveMessageToServe", comment);
+};
+
+export const deleteMessage = (comment) => {
+  if (socket) socket.emit("deleteCommentToServe", comment);
 };

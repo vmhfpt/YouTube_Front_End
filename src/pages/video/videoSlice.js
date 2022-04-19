@@ -39,6 +39,13 @@ export const videoSlice = createSlice({
     addAnComment: (state, action) => {
       state.comments.push(action.payload);
     },
+    removeAnItem: (state, action) => {
+      const tmp_comment = state.comments;
+      console.log("~ tmp_comment", tmp_comment);
+      tmp_comment.filter((item) => item.id !== action.payload.id);
+      console.log("~ tmp_comment", tmp_comment);
+      state.comments = tmp_comment;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -55,6 +62,6 @@ export const videoSlice = createSlice({
   },
 });
 
-export const { setVideo, addAnComment } = videoSlice.actions;
+export const { setVideo, addAnComment, removeAnItem } = videoSlice.actions;
 // export const selectVideos = (state) => state.video.videos;
 export default videoSlice.reducer;

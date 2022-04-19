@@ -8,6 +8,7 @@ import {
   initiateSocketConnection,
   disconnectSocket,
   sendMessage,
+  deleteMessage,
 } from "../../services/socketio.service";
 import {
   // uploadComment,
@@ -105,7 +106,10 @@ export function VideoShow() {
                 >
                   Edit
                 </span>
-                <span style={{ color: "red" }} onClick={() => {}}>
+                <span
+                  style={{ color: "red" }}
+                  onClick={() => deleteMessage(item)}
+                >
                   Delete
                 </span>
               </div>
