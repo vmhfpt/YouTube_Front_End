@@ -40,11 +40,8 @@ export const videoSlice = createSlice({
       state.comments.push(action.payload);
     },
     removeAnItem: (state, action) => {
-      const tmp_comment = state.comments;
-      console.log("~ tmp_comment", tmp_comment);
-      tmp_comment.filter((item) => item.id !== action.payload.id);
-      console.log("~ tmp_comment", tmp_comment);
-      state.comments = tmp_comment;
+      let tmp_comment = state.comments;
+      state.comments = tmp_comment.filter((item) => item.id !== action.payload.id);
     },
   },
   extraReducers: (builder) => {

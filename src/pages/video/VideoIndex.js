@@ -14,7 +14,7 @@ export function VideoIndex() {
     // console.log('State videoState is:', videoState);
   }
   useEffect(() => {
-    IPService.saveUserInfo();
+    // IPService.saveUserInfo();
     fetchData();
   }, []);
 
@@ -27,7 +27,7 @@ export function VideoIndex() {
     <div className='container mx-auto'>
       <Navbar></Navbar>
       <div className='grid md:grid-cols-3 gap-4 sm:grid-cols-1'>
-        {videoState.videos.map((item) => (
+        {videoState.videos?.map((item) => (
           <div
             key={item.id}
             style={{ display: 'inline-block' }}
