@@ -11,8 +11,6 @@ import {
   deleteMessage,
 } from "../../services/socketio.service";
 import {
-  // uploadComment,
-  // addAnComment,
   getCommentsByVideoId,
 } from "./videoSlice";
 
@@ -54,7 +52,6 @@ export function VideoShow() {
       // token: `Bearer ${authState.accessToken}`,
     };
     sendMessage(comment);
-    // await store.dispatch(uploadComment(comment));
   };
   return (
     <div className="container mx-auto">

@@ -17,16 +17,10 @@ export const getCommentsByVideoId = createAsyncThunk(
   async (videoId) => {
     const response = await VideoService.getCommentsByVideoId(videoId);
     return response;
+    
   }
 );
 
-export const uploadComment = createAsyncThunk(
-  "videos/upload_comment",
-  async (comment) => {
-    const response = await VideoService.uploadComment(comment);
-    return response;
-  }
-);
 
 ///////////////////////////////////////////////////////////
 export const videoSlice = createSlice({
@@ -40,7 +34,7 @@ export const videoSlice = createSlice({
       state.comments.push(action.payload);
     },
     removeAnItem: (state, action) => {
-      let tmp_comment = state.comments;//becarefull this line
+      let tmp_comment = state.comments;
       state.comments = tmp_comment.filter((item) => item.id !== action.payload.id);
     },
   },
@@ -51,10 +45,6 @@ export const videoSlice = createSlice({
       })
       .addCase(getCommentsByVideoId.fulfilled, (state, action) => {
         state.comments = action.payload;
-        console.log(
-          "file: videoSlice.js ~ line 53 ~ .addCase ~ state.comments",
-          state.comments
-        );
       });
   },
 });

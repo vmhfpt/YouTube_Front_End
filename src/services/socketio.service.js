@@ -19,15 +19,16 @@ export const initiateSocketConnection = (authState) => {
     socket.close();
   });
   socket.on("responseMessageFromServe", (msg) => {
-    NotificationManager.success("Comment success", "Comment notify");
     store.dispatch(addAnComment(msg));
   });
   socket.on("responseDeleteMessageFromServe", (msg) => {
-    NotificationManager.success("Delete comment success", "Comment notify");
     store.dispatch(removeAnItem(msg));
   });
-  socket.on("notifyForClient", (msg) => {
-    NotificationManager.error(msg, "Login require");
+  socket.on("notifySuccessForClient", (msg) => {
+    NotificationManager.success(msg.msg, msg.title);
+  });
+  socket.on("notifyErrorForClient", (msg) => {
+    NotificationManager.error(msg.msg, msg.title);
   });
 };
 
