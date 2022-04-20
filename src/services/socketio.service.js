@@ -19,11 +19,10 @@ export const initiateSocketConnection = (authState) => {
     socket.close();
   });
   socket.on("responseMessageFromServe", (msg) => {
-    console.log("Msg from serve is", msg);
+    NotificationManager.success("Comment success", "Comment notify");
     store.dispatch(addAnComment(msg));
   });
   socket.on("responseDeleteMessageFromServe", (msg) => {
-    console.log("Comment need to remove from serve is", msg);
     NotificationManager.success("Delete comment success", "Comment notify");
     store.dispatch(removeAnItem(msg));
   });
