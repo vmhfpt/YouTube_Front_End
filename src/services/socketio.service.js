@@ -24,6 +24,7 @@ export const initiateSocketConnection = (authState) => {
   });
   socket.on("responseDeleteMessageFromServe", (msg) => {
     console.log("Comment need to remove from serve is", msg);
+    NotificationManager.success("Delete comment success", "Comment notify");
     store.dispatch(removeAnItem(msg));
   });
   socket.on("notifyForClient", (msg) => {
