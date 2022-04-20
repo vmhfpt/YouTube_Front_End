@@ -23,7 +23,7 @@ export const initiateSocketConnection = (authState) => {
     store.dispatch(addAnComment(msg));
   });
   socket.on("responseDeleteMessageFromServe", (msg) => {
-    console.log("Msg from serve is", msg);
+    console.log("Comment need to remove from serve is", msg);
     store.dispatch(removeAnItem(msg));
   });
   socket.on("notifyForClient", (msg) => {

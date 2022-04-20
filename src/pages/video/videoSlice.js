@@ -40,7 +40,7 @@ export const videoSlice = createSlice({
       state.comments.push(action.payload);
     },
     removeAnItem: (state, action) => {
-      let tmp_comment = state.comments;
+      let tmp_comment = state.comments;//becarefull this line
       state.comments = tmp_comment.filter((item) => item.id !== action.payload.id);
     },
   },

@@ -11,10 +11,9 @@ export function VideoIndex() {
   const videoState = useSelector((state) => state.videos);
   async function fetchData() {
     await store.dispatch(retrieveVideos());
-    // console.log('State videoState is:', videoState);
   }
   useEffect(() => {
-    // IPService.saveUserInfo();
+    IPService.saveUserInfo();
     fetchData();
   }, []);
 
