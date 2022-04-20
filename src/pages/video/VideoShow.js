@@ -93,7 +93,7 @@ export function VideoShow() {
           <p className="text-red-600/100">{errors.content_comment.message}</p>
         )}
       </form>
-      {JSON.stringify(videoState.comments)}
+      {/* {JSON.stringify(videoState.comments)} */}
       {videoState.comments?.map((item) => (
         <div key={item.id} className="px-2">
           <div id={item.id} value={item} style={{ position: "relative" }}>
