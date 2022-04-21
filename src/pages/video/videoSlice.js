@@ -5,10 +5,16 @@ export const videoState = {
   video: {},
   comments: [],
   videos: [],
+  categories: [],
 };
 ///////////////////ACTIONS OF REDUX///////////////////////
 export const retrieveVideos = createAsyncThunk("videos/retrieve", async () => {
   const response = await VideoService.getAll();
+  return response;
+});
+
+export const retrieveCategories = createAsyncThunk("categories/retrieve", async () => {
+  const response = await VideoService.getAllCategories();
   return response;
 });
 
@@ -42,6 +48,9 @@ export const videoSlice = createSlice({
     builder
       .addCase(retrieveVideos.fulfilled, (state, action) => {
         state.videos = action.payload;
+      })
+      .addCase(retrieveCategories.fulfilled, (state, action) => {
+        state.categories = action.payload;
       })
       .addCase(getCommentsByVideoId.fulfilled, (state, action) => {
         state.comments = action.payload;

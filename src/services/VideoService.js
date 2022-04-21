@@ -8,6 +8,13 @@ class VideoService {
     const result = await response.json();
     return result;
   }
+  async getAllCategories() {
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/videos/categories`
+    );
+    const result = await response.json();
+    return result;
+  }
   async uploadComment(comment) {
     const token = comment.token;
     delete comment.token;

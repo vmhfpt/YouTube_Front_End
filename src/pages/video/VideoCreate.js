@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Navbar } from "../../components/Navbar";
+import { useSelector } from "react-redux";
+import store from "../../app/store";
+import { retrieveCategories } from "./videoSlice";
 export function VideoCreate() {
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
   const [fileVideo, setVideoFile] = useState(undefined);
- 
+  const authState = useSelector((state) => state.auth);
+  const videoState = useSelector((state) => state.videos);
+
+  async function fetchData() {
+    await store.dispatch(retrieveCategories());
+  }
   const selectFile = (event) => {
     setVideoFile(event.target.files);
     onFileChange();
@@ -50,7 +58,6 @@ export function VideoCreate() {
         document.querySelector("#file-input").files[0].type
       ) === -1
     ) {
-      //check is file mp4
       alert("Error : Only MP4 format allowed");
       return;
     } else {
@@ -75,15 +82,15 @@ export function VideoCreate() {
     }
     var file = document.querySelector("#file-input").files[0];
     var canvasData = document.getElementById("canvas").toDataURL("image/jpeg");
-    var videoname = document.getElementById("idnamevideo").value;
-    var category = document.getElementById("myCategory").value;
+    var video_name = document.getElementById("idnamevideo").value;
+    var categoryId = document.getElementById("myCategory").value;
 
-    if (videoname !== "") {
+    if (video_name !== "") {
       var data = new FormData();
       data.append("fileVideo", file);
       data.append("fileImage", canvasData);
-      data.append("name", videoname);
-      data.append("category", category);
+      data.append("name", video_name);
+      data.append("categoryId", categoryId);
 
       // var request = new XMLHttpRequest();
       // request.onreadystatechange = function () {
@@ -99,46 +106,59 @@ export function VideoCreate() {
           `${process.env.REACT_APP_BACKEND_URL}/videos/upload`,
           {
             method: "POST",
+            headers: {
+              Authorization: `Bearer ${authState.accessToken}`,
+            },
             body: data,
           }
         );
-        console.log("Log ~ response.json()", response.json());
+        const result = await response.json();
+        console.log("~ result", result);
+        if (result.success === true) {
+          alert(result.message);
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 3000);
+        } else {
+          alert(result.message);
+        }
       }
       sendRequest();
     } else {
-      alert("please enter videoname to upload ");
-      console.log("please enter videoname");
+      alert("Please enter video name to upload ");
+      console.log("Please enter video name");
     }
   };
 
   useEffect(() => {
     initThumb();
+    fetchData();
   }, []);
 
   return (
     <div className="container mx-auto">
       <Navbar></Navbar>
       <div>
-        <input type="file" id="file-input" onChange={selectFile}  />
-        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4' onClick={() => capture()} id="butoncapture">
+        <input type="file" id="file-input" onChange={selectFile} />
+        <span>LIMIT 30MB</span>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
+          onClick={() => capture()}
+          id="butoncapture"
+        >
           set avatar video
         </button>
         Category
         <select id="myCategory">
-          <option value="music">music</option>
-          <option value="young music">young music</option>
-          <option value="gold music">gold music</option>
-          <option value="game music">game music</option>
-          <option value="learn english">learn english</option>
-          <option value="english music">english music</option>
-          <option value="animation">animation</option>
-          <option value="movie">movie</option>
-          <option value="comedy">comedy</option>
-          <option value="news">news</option>
-          <option value="war content">war content</option>
-          <option value="others">others</option>
+          {videoState.categories?.map((item) => (
+            <option value={item.id}>{item.name}</option>
+          ))}
         </select>
-        <button className='bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4' id="confirm" onClick={() => uploadVideo()}>
+        <button
+          className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4"
+          id="confirm"
+          onClick={() => uploadVideo()}
+        >
           upload to server
         </button>
         Name of video view on website <input type="text" id="idnamevideo" />
