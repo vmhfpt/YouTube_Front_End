@@ -13,8 +13,8 @@ export function VideoIndex() {
     await store.dispatch(retrieveVideos());
   }
   useEffect(() => {
-    IPService.saveUserInfo();
     fetchData();
+    IPService.saveUserInfo();
   }, []);
 
   const handleClick = async (item) => {
