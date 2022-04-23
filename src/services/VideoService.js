@@ -1,5 +1,4 @@
-
-const axios = require('axios');
+const axios = require("axios");
 class VideoService {
   async getAll() {
     const response = await fetch(
@@ -29,9 +28,9 @@ class VideoService {
     );
     return result.data;
   }
-  async getCommentsByVideoId(videoId) {
+  async getCommentsAndSuggestionVideoBy(videoId, categoryId) {
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/videos/get-comment`,
+      `${process.env.REACT_APP_BACKEND_URL}/videos/get-comment-and-suggestion-videos`,
       {
         method: "POST",
         headers: {
@@ -39,6 +38,7 @@ class VideoService {
         },
         body: JSON.stringify({
           videoId: videoId,
+          categoryId: categoryId,
         }),
       }
     );
@@ -46,11 +46,14 @@ class VideoService {
     return result;
   }
   async saveVideoToServe(data) {
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/videos/upload`, {
-      method: 'POST',
-      body: data,
-    });
-    console.log('Log ~ response.json()', response.json());
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/videos/upload`,
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+    console.log("Log ~ response.json()", response.json());
   }
 }
 export default new VideoService();

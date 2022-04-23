@@ -4,6 +4,7 @@ import VideoService from "../../services/VideoService";
 export const videoState = {
   video: {},
   comments: [],
+  suggestionVideos: [],
   videos: [],
   categories: [],
 };
@@ -13,20 +14,24 @@ export const retrieveVideos = createAsyncThunk("videos/retrieve", async () => {
   return response;
 });
 
-export const retrieveCategories = createAsyncThunk("categories/retrieve", async () => {
-  const response = await VideoService.getAllCategories();
-  return response;
-});
-
-export const getCommentsByVideoId = createAsyncThunk(
-  "videos/get_comments",
-  async (videoId) => {
-    const response = await VideoService.getCommentsByVideoId(videoId);
+export const retrieveCategories = createAsyncThunk(
+  "categories/retrieve",
+  async () => {
+    const response = await VideoService.getAllCategories();
     return response;
-    
   }
 );
 
+export const getCommentsAndSuggestionVideoBy = createAsyncThunk(
+  "videos/get_comments",
+  async (videoInfo) => {
+    const response = await VideoService.getCommentsAndSuggestionVideoBy(
+      videoInfo.videoId,
+      videoInfo.categoryId
+    );
+    return response;
+  }
+);
 
 ///////////////////////////////////////////////////////////
 export const videoSlice = createSlice({
@@ -41,7 +46,9 @@ export const videoSlice = createSlice({
     },
     removeAnItem: (state, action) => {
       let tmp_comment = state.comments;
-      state.comments = tmp_comment.filter((item) => item.id !== action.payload.id);
+      state.comments = tmp_comment.filter(
+        (item) => item.id !== action.payload.id
+      );
     },
   },
   extraReducers: (builder) => {
@@ -52,12 +59,12 @@ export const videoSlice = createSlice({
       .addCase(retrieveCategories.fulfilled, (state, action) => {
         state.categories = action.payload;
       })
-      .addCase(getCommentsByVideoId.fulfilled, (state, action) => {
-        state.comments = action.payload;
+      .addCase(getCommentsAndSuggestionVideoBy.fulfilled, (state, action) => {
+        state.comments = action.payload.comments;
+        state.suggestionVideos = action.payload.suggestionVideos;
       });
   },
 });
 
 export const { setVideo, addAnComment, removeAnItem } = videoSlice.actions;
-// export const selectVideos = (state) => state.video.videos;
 export default videoSlice.reducer;
