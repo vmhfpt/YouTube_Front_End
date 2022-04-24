@@ -34,8 +34,6 @@ export function Login() {
       NotificationManager.error(result.payload.message, 'Login Info');
     }
     console.log('Log ~ onLogin ~ result', result.payload);
-    // store.dispatch(setUser());
-    // alert(JSON.stringify(data));
   };
 
   return (

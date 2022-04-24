@@ -40,6 +40,17 @@ export const deleteVideoByVideoId = createAsyncThunk(
     return response;
   }
 );
+export const updateVideoName = createAsyncThunk(
+  "videos/deleteByVideoId",
+  async (videoInfo) => {
+    const response = await VideoService.updateVideoName(
+      videoInfo.videoId,
+      videoInfo.videoName,
+      videoInfo.token
+    );
+    return response;
+  }
+);
 
 export const getCommentsAndSuggestionVideoBy = createAsyncThunk(
   "videos/get_comments",
