@@ -45,15 +45,35 @@ class VideoService {
     const result = await response.json();
     return result;
   }
-  async saveVideoToServe(data) {
+  async deleteVideoByVideoId(videoId, token) {
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/videos/upload`,
+      `${process.env.REACT_APP_BACKEND_URL}/videos/delete`,
       {
-        method: "POST",
-        body: data,
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify({
+          videoId: videoId,
+        }),
       }
     );
-    console.log("Log ~ response.json()", response.json());
+    const result = await response.json();
+    return result;
+  }
+  async getVideosByUserId(token) {
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/videos/get-video-by-user-id`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+    const result = await response.json();
+    return result;
   }
 }
 export default new VideoService();

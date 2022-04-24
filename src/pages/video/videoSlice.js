@@ -22,6 +22,25 @@ export const retrieveCategories = createAsyncThunk(
   }
 );
 
+export const getVideosByUserId = createAsyncThunk(
+  "videos/retrieveByUserId",
+  async (token) => {
+    const response = await VideoService.getVideosByUserId(token);
+    return response;
+  }
+);
+
+export const deleteVideoByVideoId = createAsyncThunk(
+  "videos/deleteByVideoId",
+  async (videoInfo) => {
+    const response = await VideoService.deleteVideoByVideoId(
+      videoInfo.videoId,
+      videoInfo.token
+    );
+    return response;
+  }
+);
+
 export const getCommentsAndSuggestionVideoBy = createAsyncThunk(
   "videos/get_comments",
   async (videoInfo) => {
@@ -54,6 +73,9 @@ export const videoSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(retrieveVideos.fulfilled, (state, action) => {
+        state.videos = action.payload;
+      })
+      .addCase(getVideosByUserId.fulfilled, (state, action) => {
         state.videos = action.payload;
       })
       .addCase(retrieveCategories.fulfilled, (state, action) => {

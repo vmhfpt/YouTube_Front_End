@@ -6,6 +6,7 @@ import { Hooktest } from "./pages/hooklab/Hooktest";
 import { VideoIndex } from "./pages/video/VideoIndex";
 import { VideoShow } from "./pages/video/VideoShow";
 import { VideoCreate } from "./pages/video/VideoCreate";
+import { VideoEdit } from "./pages/video/VideoEdit";
 import { Login } from "./pages/auth/Login";
 import { Signup } from "./pages/auth/Signup";
 import { TrackIpIndex } from "./pages/trackip/TrackIpIndex";
@@ -25,6 +26,10 @@ function App() {
       <Route
         path="/video-create"
         element={isLogin ? <VideoCreate /> : <Navigate to="/login" />}
+      ></Route>
+      <Route
+        path="/video-edit"
+        element={isLogin ? <VideoEdit /> : <Navigate to="/login" />}
       ></Route>
     </Routes>
   );

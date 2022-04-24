@@ -125,7 +125,7 @@ export function VideoCreate() {
       }
       sendRequest();
     } else {
-      alert("Please enter video name to upload ");
+      alert("Please enter video name to upload");
       console.log("Please enter video name");
     }
   };
