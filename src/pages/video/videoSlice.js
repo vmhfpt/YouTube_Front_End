@@ -40,6 +40,7 @@ export const deleteVideoByVideoId = createAsyncThunk(
     return response;
   }
 );
+
 export const updateVideoName = createAsyncThunk(
   "videos/deleteByVideoId",
   async (videoInfo) => {
@@ -80,6 +81,15 @@ export const videoSlice = createSlice({
         (item) => item.id !== action.payload.id
       );
     },
+    updateVideoNameReducer: (state, action) => {
+      let tmp_videos = state.videos;
+      state.videos = tmp_videos.map((item) => {
+        if (item.id === action.payload.videoId) {
+          item.name = action.payload.videoName;
+        }
+        return item;
+      });
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -99,5 +109,6 @@ export const videoSlice = createSlice({
   },
 });
 
-export const { setVideo, addAnComment, removeAnItem } = videoSlice.actions;
+export const { setVideo, addAnComment, removeAnItem, updateVideoNameReducer } =
+  videoSlice.actions;
 export default videoSlice.reducer;

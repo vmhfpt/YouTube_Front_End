@@ -7,6 +7,7 @@ import {
   deleteVideoByVideoId,
   setVideo,
   updateVideoName,
+  updateVideoNameReducer,
 } from "./videoSlice";
 import { NotificationManager } from "react-notifications";
 import { Navbar } from "../../components/Navbar";
@@ -74,7 +75,7 @@ export function VideoEdit() {
         "Update video name info"
       );
       setStatusEditVideoNameValue(false);
-      fetchData();
+      store.dispatch(updateVideoNameReducer(videoEdit));
     }
   };
 
