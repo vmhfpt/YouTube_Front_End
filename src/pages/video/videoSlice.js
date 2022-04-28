@@ -41,6 +41,29 @@ export const deleteVideoByVideoId = createAsyncThunk(
   }
 );
 
+export const adminDeleteVideoByVideoId = createAsyncThunk(
+  "videos/adminDeleteByVideoId",
+  async (videoInfo) => {
+    const response = await VideoService.adminDeleteVideoByVideoId(
+      videoInfo.videoId,
+      videoInfo.token
+    );
+    return response;
+  }
+);
+
+export const adminUpdateVideoName = createAsyncThunk(
+  "videos/deleteByVideoId",
+  async (videoInfo) => {
+    const response = await VideoService.adminUpdateVideoName(
+      videoInfo.videoId,
+      videoInfo.videoName,
+      videoInfo.token
+    );
+    return response;
+  }
+);
+
 export const updateVideoName = createAsyncThunk(
   "videos/deleteByVideoId",
   async (videoInfo) => {
