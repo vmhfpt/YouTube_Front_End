@@ -41,7 +41,7 @@ export function VideoShow() {
   }
 
   useEffect(() => {
-    initiateSocketConnection(authState);
+    initiateSocketConnection(authState, videoState.video.id);
     fetchComments();
     playVideo();
     return () => {
