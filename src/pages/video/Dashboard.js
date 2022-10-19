@@ -232,7 +232,7 @@ views
               <img src={item.urlThumb} alt="" 
                onClick={() => handleClick(item)}
               />
-              <span> 10:49</span>
+              <span> {item.duration}</span>
           </div>
           <div className="app-youtube-dashboard-gird__item-content">
               

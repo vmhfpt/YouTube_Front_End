@@ -366,7 +366,7 @@ export function VideoShow() {
                     <div className="app-detail-video__suggest-list-video-item-image">
                         <img src={item.urlThumb} alt=""  onClick={() => onClickSuggestion(item)}/>
                         <div className="app-detail-video__suggest-list-video-item-time">
-                            <span >1:00:38</span>
+                            <span >{item.duration}</span>
                         </div>
                     </div>
                 </div>
