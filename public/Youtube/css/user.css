@@ -1,0 +1,146 @@
+
+
+.app-register-form__title img {
+    width : 75px;
+    display: block;
+}
+.app-register-form__title span {
+    display: block;
+}
+.container-google {
+    padding : 40px 40px 40px 40px;
+}
+.app-register-form__title-create {
+    font-size: 22px;
+    margin : 12px 0px;
+}
+.app-register-form__title-continue {
+    font-size: 16px;
+}
+
+.form-google-handle {
+    margin-top : 27px;
+}
+.form-text input {
+    background: white;
+    border-radius: 4px;
+    font-size: 14px;
+    width : 100%;
+    border: 1px solid rgb(203, 203, 203);
+    padding : 10px 10px;
+}
+.form-text input:focus {
+    
+    outline: none !important;
+    border:2px solid #1a73e8;
+}
+
+.form-text input:focus::placeholder {
+    color: transparent;
+  }
+.form-text {
+    position: relative;
+}
+.form-text label {
+    padding : 0px 4px;
+    font-size: 11px;
+    background: white;
+    position: absolute;
+    top : -7px;
+    left : 5.5px;
+    color : hsl(206,100%,52%);
+}
+.form-group {
+    margin : 13px 0px;
+}
+.form-group span {
+    font-size: 12px;
+   padding-left : 15px;
+}
+.form-checkbox {
+    
+   align-items: center;
+   justify-content: center;
+   display: block;
+}
+.app-register-form__title-login{
+   text-align: center;
+}
+.app-register-form__title-login-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-checkbox label {
+  margin-left : 12px;
+  font-size: 14px;
+}
+.form-checkbox input {
+    position: relative;
+    top : 2px;
+    
+ }
+ .submit-button__next {
+    display: flex;
+    justify-content: flex-end;
+ }
+ .submit-button__login button{
+    cursor: pointer;
+    background: none;
+    border: none;
+    color : #1a73e8;
+    font-size: 14.3px;
+    font-weight: 600;
+ }
+ .submit-button__next button {
+    cursor: pointer;
+    background: #1a73e8;
+    color : #fff;
+    border : none;
+    border-radius: 4px;
+    font-size: 14.3px;
+    padding : 9px 28px;
+ }
+ .submit-button {
+    margin-top : 50px;
+ }
+ .app-register-service img {
+    width : 90%;
+ }
+ .app-register-service {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .app-register-service span {
+    text-align: center;
+    font-size: 16px;
+ }
+ .app-register-service-center {
+    position: relative;
+   
+    height : 460px;
+   
+ }
+ .app-register-service-center-vertically {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+ }
+  .container-google {
+    border-radius: 10px;
+    border: 1px solid rgb(203, 203, 203);
+ }
+ 
+ .container-google-login {
+    border-radius: 10px;
+    border: 1px solid rgb(203, 203, 203);
+}
+.container-google-login {
+    padding : 40px 40px 40px 40px;
+}
+.error-form {
+    color :red;
+}

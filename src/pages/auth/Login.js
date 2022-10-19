@@ -1,14 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-
-import { NotificationManager } from 'react-notifications';
-
+import {useState} from "react";
 import store from '../../app/store';
 import { login, setUser } from './authSlice';
-
-import styles from './Login.module.css';
+import Google from "./Layer 1.png";
+import { NotificationManager } from 'react-notifications';
 export function Login() {
+
   let navigate = useNavigate();
   const {
     register,
@@ -27,20 +26,25 @@ export function Login() {
         })
       );
       NotificationManager.success(result.payload.message, 'Login Info');
+      
+    
       setTimeout(() => {
         navigate(`/`);
       }, 2000);
     } else {
+      
+
       NotificationManager.error(result.payload.message, 'Login Info');
     }
     console.log('Log ~ onLogin ~ result', result.payload);
   };
 
-  return (
+  
+  /* return (
     <div>
       <main>
-        <div className={styles.row}>
-          <div className={styles.colm_logo}>
+        <div classNameName={styles.row}>
+          <div classNameName={styles.colm_logo}>
             <img
               src='https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg'
               alt='Logo'
@@ -49,8 +53,8 @@ export function Login() {
               Facebook helps you connect and share with the people in your life.
             </h2>
           </div>
-          <div className={styles.colm_form}>
-            <form className={styles.form_container}>
+          <div classNameName={styles.colm_form}>
+            <form classNameName={styles.form_container}>
               <input
                 type='text'
                 placeholder='Email address or phone number'
@@ -60,10 +64,10 @@ export function Login() {
                 })}
               />
               {errors?.email?.type === 'required' && (
-                <p className='text-red-600/100'>This field is required</p>
+                <p classNameName='text-red-600/100'>This field is required</p>
               )}
               {errors?.email?.type === 'maxLength' && (
-                <p className='text-red-600/100'>
+                <p classNameName='text-red-600/100'>
                   First name cannot exceed 50 characters
                 </p>
               )}
@@ -77,20 +81,20 @@ export function Login() {
                 })}
               />
               {errors?.password?.type === 'required' && (
-                <p className='text-red-600/100'>This field is required</p>
+                <p classNameName='text-red-600/100'>This field is required</p>
               )}
               {errors?.password?.type === 'minLength' && (
-                <p className='text-red-600/100'>at lest 8 characters</p>
+                <p classNameName='text-red-600/100'>at lest 8 characters</p>
               )}
               {errors?.password?.type === 'maxLength' && (
-                <p className='text-red-600/100'>
+                <p classNameName='text-red-600/100'>
                   Field cannot exceed 20 characters
                 </p>
               )}
               <input
                 type='submit'
                 onClick={handleSubmit(onLogin)}
-                className={styles.btn_login}
+                classNameName={styles.btn_login}
                 value='Login'
               />
               <Link to='/'>Forgotten password?</Link>
@@ -99,7 +103,7 @@ export function Login() {
                 onClick={() => {
                   navigate(`/register`);
                 }}
-                className={styles.btn_new}
+                classNameName={styles.btn_new}
                 value='Create new Account'
               />
             </form>
@@ -113,7 +117,7 @@ export function Login() {
         </div>
       </main>
       <footer>
-        <div className={styles.footer_contents}>
+        <div classNameName={styles.footer_contents}>
           <ol>
             <li>English (UK)</li>
             <li>
@@ -146,11 +150,103 @@ export function Login() {
             <li>
               <Link to='/'>Français (France)</Link>
             </li>
-            {/* <li><button>+</button></li> */}
-          </ol>
-          <small>Facebook © 2022</small>
-        </div>
-      </footer>
+           
+            </ol>
+            <small>Facebook © 2022</small>
+          </div>
+        </footer>
+      </div>
+    ); */
+    return (<div className="container-fluid-google">
+    <div className="container-google-login">
+        <div className="row">
+            <div className="col col-s-12">
+                 <div className="app-register-form app-register-form-login">
+                         <div className="app-register-form__title app-register-form__title-login col-s-12">
+                             <div className="app-register-form__title-login-image">
+                                <img  src={Google} alt=""/>
+                             </div>
+                             <span className="app-register-form__title-create" >Đăng nhập</span>
+                             <span className="app-register-form__title-continue">Tiếp tục tới Gmail</span>
+                         </div>
+                         <div className="clear-both"></div>
+                    <form className="form-google-handle" action="" method="POST">
+                         
+                         <div className="form-group">
+                            <div className="row">
+                                <div className="col col-s-12">
+                                   <div className="form-text ">
+                                    <label>Email</label>
+                                    <input 
+                                     {...register('email', {
+                                      required: true,
+                                      maxLength: 50,
+                                    })}
+                                    type="text" placeholder="Email"/>
+                                   
+                                   </div>
+    
+                                </div>
+                                {errors?.email?.type === 'required' && (
+                <span className="error-form"> * Bắt buộc nhập</span>
+              )}
+              {errors?.email?.type === 'maxLength' && (
+                  <span className="error-form"> * Email không hợp lệ</span>
+              )}
+                                
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <div className="row">
+                                <div className="col col-s-12">
+                                   <div className="form-text ">
+                                    <label>Mật khẩu</label>
+                                    <input 
+                                     {...register('password', {
+                                      required: true,
+                                      maxLength: 20,
+                                      minLength: 8,
+                                    })}
+                                    type="password" placeholder="Mật khẩu"/>
+                                   
+                                   </div>
+    
+                                </div>
+                                {errors?.password?.type === 'required' && (
+                <span className="error-form"> * Bắt buộc nhập</span>
+              )}
+              {errors?.password?.type === 'minLength' && (
+                <span className="error-form"> * Mật khẩu phải ít nhất 8 ký tự</span>
+              )}
+              {errors?.password?.type === 'maxLength' && (
+                 <span className="error-form"> * Mật khẩu không được quá 20 ký tự</span>
+              )}
+                              
+                            </div>
+                        </div>
+                        
+                      
+                        
+                        <div className="submit-button">
+                            <div className="row">
+                                 <div className="col col-s-6 col-mb-6">
+                                    <div className="submit-button__login">
+                                       <Link to="/register"> <button>Bạn chưa có tài khoản ?</button></Link>
+                                    </div>
+                                 </div>
+                                 <div className="col col-s-6 col-mb-6">
+                                    <div className="submit-button__next">
+                                        <button    onClick={handleSubmit(onLogin)} >Đăng nhập</button>
+                                    </div>
+                                 </div>
+                            </div>
+                        </div>
+                    </form>
+                       
+                 </div>
+            </div>
+           
     </div>
-  );
+</div>
+</div>);
 }

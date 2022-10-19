@@ -87,6 +87,38 @@ export const getCommentsAndSuggestionVideoBy = createAsyncThunk(
   }
 );
 
+export const getSearchVideo = createAsyncThunk(
+  "videos/search",
+  async (data) => {
+   
+    const response = await VideoService.getSearchVideo(
+      data
+    );
+    return response;
+  }
+);
+
+export const getVideoByCategory = createAsyncThunk(
+  "videos/getVideoByCategory",
+  async (data) => {
+   
+    const response = await VideoService.getVideoByCategory(
+      data
+    );
+    return response;
+  }
+);
+export const getVideoSuggestByCategory = createAsyncThunk(
+  "videos/getVideoSuggestByCategory",
+  async (data) => {
+   
+    const response = await VideoService.getVideoByCategory(
+      data
+    );
+    return response;
+  }
+);
+
 ///////////////////////////////////////////////////////////
 export const videoSlice = createSlice({
   name: "videos",
@@ -117,7 +149,12 @@ export const videoSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(retrieveVideos.fulfilled, (state, action) => {
-        state.videos = action.payload;
+        state.videos= action.payload;
+      })
+
+      .addCase(getVideoByCategory.fulfilled, (state, action) => {
+         
+        state.videos = action.payload.videos;
       })
       .addCase(getVideosByUserId.fulfilled, (state, action) => {
         state.videos = action.payload;
@@ -128,6 +165,9 @@ export const videoSlice = createSlice({
       .addCase(getCommentsAndSuggestionVideoBy.fulfilled, (state, action) => {
         state.comments = action.payload.comments;
         state.suggestionVideos = action.payload.suggestionVideos;
+      })
+      .addCase(getVideoSuggestByCategory.fulfilled, (state, action) => {
+        state.suggestionVideos = action.payload.videos;
       });
   },
 });

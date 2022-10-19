@@ -8,10 +8,12 @@ import * as serviceWorker from './serviceWorker';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import { NotificationContainer } from 'react-notifications';
-
+import ScrollToTop from './helper/backToTop';
+/*
 import './index.css';
 import 'flowbite';
 import 'react-notifications/lib/notifications.css';
+*/
 
 let persistor = persistStore(store);
 
@@ -21,7 +23,10 @@ ReactDOM.render(
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <NotificationContainer />
+          <ScrollToTop />
           <App />
+         
+        
         </BrowserRouter>
       </PersistGate>
     </Provider>

@@ -15,22 +15,22 @@ export function Navbar() {
       navigate(`/`);
     }, 2000);
   };
-  return (
-    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
-      <div class="container flex flex-wrap justify-between items-center mx-auto">
-        <a href="/" class="flex items-center">
+ /* return (
+    <nav classNameName="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
+      <div classNameName="container flex flex-wrap justify-between items-center mx-auto">
+        <a href="/" classNameName="flex items-center">
           <span
-            class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
+            classNameName="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
             style={{ color: "#FFCC00" }}
           >
             NEIAK
           </span>
         </a>
-        <div class="flex md:order-2">
-          <div class="hidden relative mr-3 md:mr-0 md:block">
-            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+        <div classNameName="flex md:order-2">
+          <div classNameName="hidden relative mr-3 md:mr-0 md:block">
+            <div classNameName="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
               <svg
-                class="w-5 h-5 text-gray-500"
+                classNameName="w-5 h-5 text-gray-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -45,20 +45,20 @@ export function Navbar() {
             <input
               type="text"
               id="email-adress-icon"
-              class="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              classNameName="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search..."
             />
           </div>
           <button
             data-collapse-toggle="mobile-menu-3"
             type="button"
-            class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            classNameName="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-controls="mobile-menu-3"
             aria-expanded="false"
           >
-            <span class="sr-only">Open main menu</span>
+            <span classNameName="sr-only">Open main menu</span>
             <svg
-              class="w-6 h-6"
+              classNameName="w-6 h-6"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +70,7 @@ export function Navbar() {
               ></path>
             </svg>
             <svg
-              class="hidden w-6 h-6"
+              classNameName="hidden w-6 h-6"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -84,14 +84,14 @@ export function Navbar() {
           </button>
         </div>
         <div
-          class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1"
+          classNameName="hidden justify-between items-center w-full md:flex md:w-auto md:order-1"
           id="mobile-menu-3"
         >
-          <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+          <ul classNameName="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
             <li>
               <a
                 href="/"
-                class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                classNameName="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
                 aria-current="page"
               >
                 Home
@@ -100,7 +100,7 @@ export function Navbar() {
             <li>
               <a
                 href="/"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                classNameName="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 About
               </a>
@@ -108,7 +108,7 @@ export function Navbar() {
             <li>
               <Link
                 to="/video-create"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                classNameName="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Upload video
               </Link>
@@ -116,7 +116,7 @@ export function Navbar() {
             <li>
               <Link
                 to="/video-edit"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                classNameName="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Manage video
               </Link>
@@ -125,7 +125,7 @@ export function Navbar() {
               <li>
                 <Link
                   to="/admin-video"
-                  class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  classNameName="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Admin Manage video
                 </Link>
@@ -136,12 +136,12 @@ export function Navbar() {
         <button
           id="dropdownDefault"
           data-dropdown-toggle="dropdown_bt"
-          class="flex items-center md:order-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          classNameName="flex items-center md:order-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           type="button"
         >
           {authState.isLogin ? `Hi ${authState.user.name}` : "Login"}
           <svg
-            class="ml-2 w-4 h-4"
+            classNameName="ml-2 w-4 h-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -157,16 +157,16 @@ export function Navbar() {
         </button>
         <div
           id="dropdown_bt"
-          class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+          classNameName="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
         >
           <ul
-            class="py-1 text-sm text-gray-700 dark:text-gray-200"
+            classNameName="py-1 text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownDefault"
           >
             <li>
               <a
                 href="/"
-                class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                classNameName="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >
                 Dashboard
               </a>
@@ -174,7 +174,7 @@ export function Navbar() {
             <li>
               <a
                 href="/"
-                class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                classNameName="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >
                 Settings
               </a>
@@ -183,7 +183,7 @@ export function Navbar() {
               <li>
                 <a
                   href="/register"
-                  class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  classNameName="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   Register
                 </a>
@@ -193,7 +193,7 @@ export function Navbar() {
               <li>
                 <Link
                   to="/login"
-                  class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  classNameName="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   Login
                 </Link>
@@ -205,7 +205,7 @@ export function Navbar() {
                 <a
                   onClick={() => onLogout()}
                   href="/"
-                  class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  classNameName="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   Logout
                 </a>
@@ -215,5 +215,101 @@ export function Navbar() {
         </div>
       </div>
     </nav>
-  );
+     className="col col-ls-2 col-s-12 col-1 ">
+  );*/
+  return ( <div id="navbar-change" className=" col col-ls-2 col-s-12 col-1 ">
+    
+  <div className=" app-content-youtube__category">
+      <div className="app-content-youtube__category-block ">
+          <div className="app-container-fluid">
+              <div className="row">
+                  <div className="col col-ls-3 col-s-12 col-nav">
+                      <div className="app-content-youtube__category-block-icon">
+                          <i className="fa fa-home" aria-hidden="true"></i>
+                      </div>
+                  </div>
+                  <div className="col col-ls-9 col-s-12 col-nav">
+                   
+                    <div className="app-content-youtube__category-block-title">
+                    <Link to="/">    Trang chủ </Link>
+                      </div>
+                   
+                     
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div className="app-content-youtube__category-block">
+          <div className="app-container-fluid">
+              <div className="row">
+                  <div className="col col-ls-3 col-s-12 col-nav">
+                      <div className="app-content-youtube__category-block-icon">
+                          <i className="fa fa-thumbs-o-up"></i>
+                      </div>
+                  </div>
+                  <div className="col col-ls-9 col-s-12 col-nav">
+                      <div className="app-content-youtube__category-block-title">
+                          Video đã thích
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div className="app-content-youtube__category-block">
+          <div className="app-container-fluid">
+              <div className="row">
+                  <div className="col col-ls-3 col-s-12 col-nav">
+                      <div className="app-content-youtube__category-block-icon">
+                          <i className="fa fa-clock-o" aria-hidden="true"></i>
+                      </div>
+                  </div>
+                  <div className="col col-ls-9 col-s-12 col-nav">
+                      <div className="app-content-youtube__category-block-title">
+                          Video xem sau
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div className="app-content-youtube__category-block">
+          <div className="app-container-fluid">
+              <div className="row">
+                  <div className="col col-ls-3 col-s-12 col-nav">
+                      <div className="app-content-youtube__category-block-icon">
+                          <i className="fa fa-play" aria-hidden="true"></i>
+                      </div>
+                  </div>
+                  <div className="col col-ls-9 col-s-12 col-nav">
+                      
+                     
+                      <div className="app-content-youtube__category-block-title">
+                      <Link to="/my-channel">     Video của bạn</Link>
+                      </div>
+                     
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div className="app-content-youtube__category-block">
+          <div className="app-container-fluid">
+              <div className="row">
+                  <div className="col col-ls-3 col-s-12 col-nav">
+                      <div className="app-content-youtube__category-block-icon">
+                          <i className="fa fa-bandcamp" aria-hidden="true"></i>
+                      </div>
+                  </div>
+                  <div className="col col-ls-9 col-s-12 col-nav">
+                      <div className="app-content-youtube__category-block-title">
+                          Khám phá
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+
+
+  </div>
+</div> );
 }

@@ -12,6 +12,8 @@ import { Login } from "./pages/auth/Login";
 import { Signup } from "./pages/auth/Signup";
 import { TrackIpIndex } from "./pages/trackip/TrackIpIndex";
 import { selectIsLogin, selectRole } from "./pages/auth/authSlice";
+import { DashBoard } from "./pages/video/Dashboard";
+import Search from "./pages/video/Search";
 
 function App() {
   const isLogin = useSelector(selectIsLogin);
@@ -19,25 +21,30 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<VideoIndex />} />
+      <Route path="/search" element={<Search />} />
       <Route path="/redux" element={<Counter />} />
       <Route path="/hook-test" element={<Hooktest />} />
       <Route path="/videos/:videoId" element={<VideoShow />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Signup />} />
       <Route path="/ips" element={<TrackIpIndex />} />
+      <Route path="/video-manage" element={<VideoEdit />} />
       <Route
         path="/video-create"
         element={isLogin ? <VideoCreate /> : <Navigate to="/login" />}
       ></Route>
-      <Route
-        path="/video-edit"
-        element={isLogin ? <VideoEdit /> : <Navigate to="/login" />}
-      ></Route>
+     
       <Route
         path="/admin-video"
         element={
           isLogin && role === "ADMIN" ? <AdminVideoEdit /> : <Navigate to="/login" />
         }
+      ></Route>
+      
+
+    <Route
+        path="/my-channel"
+        element={isLogin ?  <DashBoard /> : <Navigate to="/login" />}
       ></Route>
     </Routes>
   );

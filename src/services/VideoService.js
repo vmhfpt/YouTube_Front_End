@@ -9,7 +9,7 @@ class VideoService {
   }
   async getAllCategories() {
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/videos/categories`
+      `${process.env.REACT_APP_BACKEND_URL}/categories`
     );
     const result = await response.json();
     return result;
@@ -128,5 +128,44 @@ class VideoService {
     const result = await response.json();
     return result;
   }
+
+  async getSearchVideo(key) {
+    
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/videos/search`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          
+        },
+        body: JSON.stringify({
+          text : key
+        }),
+      }
+    );
+    const result = await response.json();
+    return result;
+  }
+
+  async getVideoByCategory(id) {
+    
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/videos/get-videos-by-category-id`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          
+        },
+        body: JSON.stringify({
+          categoryId : id
+        }),
+      }
+    );
+    const result = await response.json();
+    return result;
+  }
+  
 }
 export default new VideoService();

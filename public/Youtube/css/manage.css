@@ -1,0 +1,230 @@
+.app-youtube-manage__title-tab li {
+    display: inline;
+    text-align: center;
+    color : #333;
+    padding : 10px 3px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right : 23px;
+}
+
+.app-youtube-manage__title-tab-active {
+    border-bottom: 3px solid blue;
+    color : blue !important;
+}
+.app-youtube-manage__title-tab {
+    padding : 12px 0px;
+    border-bottom: 1px solid rgb(228, 228, 228);
+}
+.app-youtube-manage__title h2 {
+    font-size: 22px;
+    color : #333;
+}
+.app-youtube-manage__title {
+    margin-bottom: 15px;
+}
+.app-youtube-manage__title-sort li {
+    display: inline;
+   
+    margin-right : 23px;
+    color : #333;
+    font-weight: 600;
+    font-size: 14px;
+}
+.app-youtube-manage__title-sort {
+   padding : 9px 0px 12px 0px;
+   border-bottom: 1px solid rgb(228, 228, 228);
+}
+.app-youtube-manage__title-sort li>i {
+    
+   
+    font-size: 20px;
+}
+[class*="cell-"] {
+    float: left;
+    
+
+}
+.app-youtube-manage__table-header [class*="cell-"] {
+   font-size : 14px;
+    
+
+}
+.app-youtube-manage__table-header [class*="cell-"] {
+   position: relative;
+     top : 17px;
+ 
+ }
+ .cell-1 input {
+   width : 20px;
+   height : 20px;
+ }
+.cell-1 {
+    display: flex;
+    justify-content: center;
+  
+    width :5%;
+}
+.cell-2 {
+    z-index: 5 !important;
+ 
+    width : 37%;
+}
+.cell-3 {
+    width : 190px;
+  
+}
+.cell-4 {
+    width : 190px;
+   
+}
+.cell-5 {
+    width : 170px;
+   
+}
+.cell-6 {
+    width : 130px;
+    
+}
+.cell-7 {
+    width : 130px;
+   
+}
+.cell-8 {
+    width : 120px;
+  
+}
+.table-mobile__over-flow{
+    overflow-x:hidden;
+    overflow-x:scroll;
+    width : 58%;
+    height : 50px;
+   
+}
+.form-image-content__list img {
+    width: 100%;
+    height: 86px;
+}
+.table-mobile__over-flow-content {
+    width : 940px;
+}
+.table-mobile__over-flow::-webkit-scrollbar {
+  display: none;
+}
+.app-youtube-manage__table-header {
+   
+    border-bottom: 1px solid rgb(228, 228, 228);
+}
+.table-image img {
+    width : 100%;
+    max-height : 115px;
+}
+.table-detail span {
+    display: block;
+
+   
+    display: -webkit-box;
+    height: 30px;
+  
+
+   
+    -webkit-line-clamp: 3px;
+    -webkit-box-orient: vertical;
+    
+   
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.upload-video-popup__content-set-video-detail-link a {
+    display: block;
+
+   
+    display: -webkit-box;
+    height: 18px;
+  
+
+   
+    -webkit-line-clamp: 3px;
+    -webkit-box-orient: vertical;
+    
+   
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.table-detail {
+    padding : 8px 0px;
+}
+.table-detail span:first-child {
+    font-size: 13px;
+    margin-bottom: 8px;
+    color : #333;
+}
+.table-detail span:last-child {
+    font-size: 12px;
+    color : rgb(108, 108, 108);
+}
+
+.app-youtube-manage__table-content [class*="cell-"] {
+    font-size : 14px;
+     
+ 
+ }
+ .app-youtube-manage__table-content .cell-2:hover {
+    background: rgb(239, 239, 239);
+     
+ 
+ }
+ .app-youtube-manage__table-content .cell-3>i {
+    color :#007800 !important;
+     font-size: 18px !important;
+     margin-right : 7px;
+ 
+ }
+ .app-youtube-manage__table-content .cell-5 span {
+   line-height: 23px;
+  
+ }
+ .app-youtube-manage__table-content .cell-8 p{
+   margin-top : 2px;
+  
+  }
+.app-youtube-manage__table-content {
+   padding : 15px 0px;
+    border-bottom:1px solid  rgb(228, 228, 228);
+   
+}
+.table-detail {
+    position: relative;
+}
+.tab-handle-table__detail {
+    padding : 5% 0px;
+    display: flex;
+    justify-content: center;
+    position :absolute;
+    width : 100%;
+    background: rgb(239, 239, 239);
+   top : 40px;
+   display: none;
+}
+.app-youtube-manage__table-content .cell-2:hover .tab-handle-table__detail {
+    display: block;
+     
+ 
+ }
+.tab-handle-table__detail li{
+  display: inline;
+  padding : 0px 10px;
+  cursor: pointer;
+}
+.tab-handle-table__detail li>i{
+  font-size: 24px !important;
+    
+  }
+  .app-youtube-manage__table-content-over-flow {
+    height : 670px;
+    overflow-y: scroll;
+  }
+
+  .app-youtube-manage__table-content-over-flow::-webkit-scrollbar {
+    display: none;
+  }

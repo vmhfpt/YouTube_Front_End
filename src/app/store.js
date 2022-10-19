@@ -14,7 +14,7 @@ import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
-
+import categorySlice from '../pages/category/CategorySlice';
 import counterReducer from '../pages/counter/counterSlice';
 import videoReducer from '../pages/video/videoSlice';
 import authReducer from '../pages/auth/authSlice';
@@ -30,8 +30,14 @@ const videosPersistConfig = {
   storage: storage,
   whitelist: ['video'],
 };
+const categoryPersistConfig = {
+  key: 'categories',
+  storage: storage,
+ 
+};
 
 const reducers = combineReducers({
+  category : persistReducer(categoryPersistConfig, categorySlice),
   counter: counterReducer,
   auth: authReducer,
   videos: persistReducer(videosPersistConfig, videoReducer),

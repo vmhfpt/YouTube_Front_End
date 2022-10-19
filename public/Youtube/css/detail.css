@@ -1,0 +1,262 @@
+
+.app-detail-video {
+    margin-top : 60px;
+}
+.app-detail-video__content-play {
+    width: 100%;
+}
+video {
+    width: 100%    !important;
+    height: auto   !important;
+  }
+.app-detail-video__socialite-view {
+   
+    height : 26px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+}
+.app-detail-video__channel-comment-total {
+    margin : 10px 0px;
+}
+.app-detail-video__title span {
+    font-size: 21px;
+    padding : 15px 0px;
+}
+.app-detail-video__title  {
+    padding : 15px 5px 8px 5px;
+}
+.app-detail-video__socialite-view span {
+    font-size: 14px;
+}
+.app-detail-video__socialite-view  {
+    white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis !important; 
+ 
+}
+
+.app-detail-video__socialite-view {
+     
+    font-size: 15px;
+    color : rgb(159, 159, 159);
+}
+.app-detail-video__socialite-share li {
+    display: inline;
+    margin-right : 23px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.app-detail-video__socialite-share {
+    height : 26px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+}
+.app-detail-video__socialite-share>ul>li i {
+    font-size: 20px !important;
+    width : 23px;
+}
+.app-detail-video__channel-detail {
+   
+   padding : 18px 0px;
+   border-bottom: 1px solid rgb(235, 234, 234);
+   border-top: 1px solid rgb(235, 234, 234);
+}
+
+.app-detail-video__channel-detail {
+    display: grid;
+    gap: 15px;
+}
+
+.app-detail-video__channel-detail-item img {
+    width : 42px;
+    height : 42px;
+    border-radius: 100%;
+}
+.app-detail-video__channel-detail-author b {
+    display: block;
+    font-size: 14px;
+}
+.app-detail-video__channel-detail-author span {
+    color :rgb(134, 134, 134);
+    font-size: 12px;
+}
+.app-detail-video__channel-detail-thumbnail {
+    margin : 17px 0px 20px 0px;
+    font-size: 15px;
+}
+.app-detail-video__channel-detail-thumbnail span{
+    line-height: 20px;
+}
+.app-detail-video__channel-detail-show {
+    font-size: 12px;
+    color :rgb(134, 134, 134);
+}
+.app-detail-video__channel-subscribe {
+    padding-top : 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+.app-detail-video__channel-subscribe button{
+   background: #c00;
+   color : #fff;
+   border: none;
+   padding : 12px 20px;
+   border-radius: 1px;
+}
+.app-detail-video__suggest-list-video-item-image {
+    position: relative;
+  
+}
+.app-header-youtube__search-icon a {
+    color : #333;
+}
+.app-detail-video__suggest-list-video-item-time {
+    border-radius: 2px;
+    padding : 1px 2px;
+    color : #fff;
+    background: black;
+    position: absolute;
+    bottom: 8px;
+    right : 5px;
+    font-size: 12.3px;
+}
+
+.app-detail-video__suggest-list-video-item-image img {
+    cursor: pointer;
+    width : 100%;
+    height : 110px;
+}
+.app-detail-video__suggest-list-video-item-content-title a{
+    text-decoration: none;
+    display: -webkit-box;
+   
+    height: 37px; 
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 20px;
+    -webkit-line-clamp: 3px;
+    -webkit-box-orient: vertical;
+    color : #333;
+    font-weight: 550;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   
+    
+
+}
+.app-detail-video__suggest-list-video-item-content-date span {
+    display: block;
+}
+.app-detail-video__suggest-list-video-item-content-date span:first-child {
+ font-size: 12px;
+ white-space: nowrap; 
+ overflow: hidden;
+ text-overflow: ellipsis !important; 
+ margin : 8px 0px 6px 0px;
+}
+.app-detail-video__suggest-list-video-item-content-date span:last-child {
+    font-size: 12px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis !important; 
+   }
+.app-detail-video__suggest-list-video-item-content-tag {
+    color :rgb(65, 65, 65);
+    font-size: 13px;
+   background: rgb(188, 187, 187);
+   width : 28px;
+   text-align: center;
+   padding : 2px;
+   border-radius: 2px;
+   margin-top : 6px;
+}
+
+
+
+.app-detail-video__channel-comment {
+    width : 100%;
+ 
+}
+.col-comment-fixed {
+    
+    float : left;
+   margin-right : 13px;
+}
+.col-comment-fixed  {
+ font-size: 15px;
+}
+.col-comment-fixed  {
+  font-weight: 600;
+   }
+.app-detail-video__channel-comment-post {
+    display: grid;
+    gap : 15px;
+}
+
+
+.col-fixed-post {
+    float : left;
+    width : 50px;
+}
+.app-detail-video__channel-comment-post-user img {
+    width: 40px;
+    height : 40px;
+    border-radius: 100%;
+}
+.app-detail-video__channel-comment-post-input-typing input {
+    width : 100%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgb(98, 98, 98) !important;
+    padding : 0px 0px  8px 0px; 
+}
+.app-detail-video__channel-comment-post-input-typing input:focus {
+    outline: none; 
+}
+.app-detail-video__channel-comment-post-button {
+    margin-top : 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+.app-detail-video__channel-comment-post-button button:first-child {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding : 13px 25px;
+    color :rgb(65, 65, 65);
+}
+.app-detail-video__channel-comment-post-button button:last-child {
+    cursor: pointer;
+    border-radius: 2px;
+    background:rgba(0, 0, 0, 0.05);;
+    border: none;
+    padding : 13px 25px;
+    color :rgb(183, 183, 183)
+}
+.app-detail-video__channel-show-comment-title b{
+    font-size: 13px;
+
+}
+.app-detail-video__channel-show-comment-title span{
+    color :rgb(138, 138, 138);
+    font-size: 13px;
+
+}
+.app-detail-video__channel-show-comment-content span {
+    font-size: 14px;
+    line-height: 15px;
+}
+.app-detail-video__channel-show-comment-content  {
+    margin : 7px 0px 12px 0px;
+}
+.app-detail-video__channel-show-comment-tool li {
+    display: inline-block;
+   margin-right : 12px;
+   font-size: 14px;
+}
+.app-detail-video__channel-show-comment-tool li:last-child {
+    font-weight: 600;
+    color :rgb(79, 79, 79);
+}
