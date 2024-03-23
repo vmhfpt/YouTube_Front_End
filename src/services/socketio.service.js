@@ -4,7 +4,7 @@ import { addAnComment, removeAnItem } from "../pages/video/videoSlice";
 import { NotificationManager } from "react-notifications";
 let socket;
 export const initiateSocketConnection = (authState, videoId) => {
-  socket = io('https://niklab.herokuapp.com', {
+  socket = io('https://nikba.co', {
     auth: {
       token: `${authState.accessToken}`,
       videoId: videoId,
